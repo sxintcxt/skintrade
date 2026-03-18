@@ -352,7 +352,7 @@ function render(){
   var tb = document.getElementById('TB'), em = document.getElementById('EM');
   var vis = fq ? rows.filter(function(r){ return r.skin.toLowerCase().indexOf(fq)!==-1; }) : rows;
   document.getElementById('rc').textContent = rows.length + ' сделок';
-  if(!rows.length){ tb.innerHTML=''; em.style.display=''; fixStickyTop(); return; }
+  if(!rows.length){ tb.innerHTML=''; em.style.display='';  return; }
   em.style.display = 'none';
   tb.innerHTML = '';
 
@@ -467,7 +467,7 @@ function render(){
     tb.appendChild(tr);
   });
   updS();
-  fixStickyTop();
+  
 }
 
 function exportCSV(){
