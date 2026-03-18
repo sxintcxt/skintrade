@@ -1,13 +1,16 @@
-// ── Состояние выводов и депозитов ─────────────────────────────────────────
+// ── Состояние ─────────────────────────────────────────────────────────────
 var withdrawals = [], wid = 0;
 var deposits    = [], did = 0;
-var wdRef  = null;
-var depRef = null;
+var wdRef       = null;
+var depRef      = null;
+var wdPending   = [];
+var depPending  = [];
 
-// Pending changes для выводов и депозитов
-var wdPending  = [];
-var depPending = [];
+// Сортировка
+var wdSortField  = '', wdSortDir  = 1;
+var depSortField = '', depSortDir = 1;
 
+// ── Кнопки сохранения ─────────────────────────────────────────────────────
 function updWdSaveBtns(){
   var hasPending = wdPending.length > 0 || depPending.length > 0;
   ['wdSaveBtn','wdSaveBtn2'].forEach(function(id){
@@ -22,20 +25,16 @@ function updWdSaveBtns(){
 
 // ── Доступно для вывода ───────────────────────────────────────────────────
 function getAvailForPlat(plat){
-  // Грязная проданных скинов на этой платформе
   var earned = 0;
   rows.forEach(function(r){
     if(r.sold && r.sp === plat){ var d=dirty(r); if(d!==null) earned+=d; }
   });
-  // Депозиты на эту платформу
   var deposited = 0;
   deposits.forEach(function(d){ if(d.plat===plat) deposited+=d.amount; });
-  // Покупки на этой платформе (все — т.к. деньги уже на платформе)
   var spent = 0;
   rows.forEach(function(r){
     if(r.bp === plat && r.bp !== 'Бесплатно') spent += parseFloat(r.bpr)||0;
   });
-  // Уже выведено
   var withdrawn = 0;
   withdrawals.forEach(function(w){ if(w.plat===plat) withdrawn+=w.amount; });
   return Math.max(0, earned + deposited - spent - withdrawn);
@@ -149,17 +148,16 @@ function delDep(id){
   updS();
 }
 
-// ── Сохранение / сброс выводов и депозитов ───────────────────────────────
+// ── Сохранение / сброс ────────────────────────────────────────────────────
 function saveWdNow(){
-  if(!window.fbReady){ alert('Нет подключения к Firebase'); return; }
+  if(!fbReady){ alert('Нет подключения к Firebase'); return; }
   var wObj = {};
   withdrawals.forEach(function(w){ wObj['w'+w.id]=w; });
   var dObj = {};
   deposits.forEach(function(d){ dObj['d'+d.id]=d; });
-  Promise.all([
-    wdRef  ? wdRef.set(wObj)   : Promise.resolve(),
-    depRef ? depRef.set(dObj)  : Promise.resolve()
-  ]).then(function(){
+  var p1 = wdRef  ? wdRef.set(wObj)  : Promise.resolve();
+  var p2 = depRef ? depRef.set(dObj) : Promise.resolve();
+  Promise.all([p1, p2]).then(function(){
     wdPending.forEach(function(ch){ writeLog(ch.action, ch.details); });
     depPending.forEach(function(ch){ writeLog(ch.action, ch.details); });
     wdPending = []; depPending = [];
@@ -186,69 +184,59 @@ function saveDepLocal(){
 }
 function loadWdLocal(){
   try{
-    var s=localStorage.getItem('cs2wd_bak');
+    var s = localStorage.getItem('cs2wd_bak');
     if(s){ withdrawals=JSON.parse(s); wid=withdrawals.reduce(function(m,w){ return Math.max(m,w.id); },0); }
   }catch(e){}
 }
 function loadDepLocal(){
   try{
-    var s=localStorage.getItem('cs2dep_bak');
+    var s = localStorage.getItem('cs2dep_bak');
     if(s){ deposits=JSON.parse(s); did=deposits.reduce(function(m,d){ return Math.max(m,d.id); },0); }
   }catch(e){}
 }
 
-// ── Сортировка выводов и депозитов ───────────────────────────────────────
-var wdSortField = '', wdSortDir = 1;
-var depSortField = '', depSortDir = 1;
-
+// ── Сортировка ────────────────────────────────────────────────────────────
 function sortWd(field){
   if(wdSortField === field) wdSortDir *= -1;
   else { wdSortField = field; wdSortDir = 1; }
   renderWd();
-  document.querySelectorAll('th[data-sort-wd]').forEach(function(th){
-    var f = th.getAttribute('data-sort-wd');
-    var arr = th.querySelector('.sort-arr');
-    if(arr) arr.textContent = f===wdSortField ? (wdSortDir===1?' ▲':' ▼') : ' ⇅';
-  });
 }
 
 function sortDep(field){
   if(depSortField === field) depSortDir *= -1;
   else { depSortField = field; depSortDir = 1; }
   renderDep();
-  document.querySelectorAll('th[data-sort-dep]').forEach(function(th){
-    var f = th.getAttribute('data-sort-dep');
+}
+
+function applySort(arr, field, dir){
+  if(!field) return arr.slice().reverse();
+  return arr.slice().sort(function(a,b){
+    var av = a[field] || 0, bv = b[field] || 0;
+    if(typeof av === 'string'){ av = av.toLowerCase(); bv = bv.toLowerCase(); }
+    if(av < bv) return -dir;
+    if(av > bv) return  dir;
+    return 0;
+  });
+}
+
+function updateWdArrows(attr, field, dir){
+  document.querySelectorAll('th['+attr+']').forEach(function(th){
+    var f = th.getAttribute(attr);
     var arr = th.querySelector('.sort-arr');
-    if(arr) arr.textContent = f===depSortField ? (depSortDir===1?' ▲':' ▼') : ' ⇅';
+    if(!arr) return;
+    arr.textContent = f === field ? (dir===1?' ▲':' ▼') : ' ⇅';
   });
 }
 
-function applySortWd(arr){
-  if(!wdSortField) return arr.slice().reverse(); // default: newest first
-  return arr.slice().sort(function(a,b){
-    var av = a[wdSortField] || 0, bv = b[wdSortField] || 0;
-    if(av < bv) return -1 * wdSortDir;
-    if(av > bv) return  1 * wdSortDir;
-    return 0;
-  });
-}
-
-function applySortDep(arr){
-  if(!depSortField) return arr.slice().reverse(); // default: newest first
-  return arr.slice().sort(function(a,b){
-    var av = a[depSortField] || 0, bv = b[depSortField] || 0;
-    if(av < bv) return -1 * depSortDir;
-    if(av > bv) return  1 * depSortDir;
-    return 0;
-  });
-}
-
-// ── Рендер таблицы выводов ────────────────────────────────────────────────
+// ── Рендер выводов ────────────────────────────────────────────────────────
 function renderWd(){
-  var tb=document.getElementById('WD-TB'), em=document.getElementById('WD-EM');
+  var tb = document.getElementById('WD-TB');
+  var em = document.getElementById('WD-EM');
+  if(!tb) return;
+  updateWdArrows('data-sort-wd', wdSortField, wdSortDir);
   if(!withdrawals.length){ tb.innerHTML=''; em.style.display=''; return; }
-  em.style.display='none';
-  var sorted = applySortWd(withdrawals);
+  em.style.display = 'none';
+  var sorted = applySort(withdrawals, wdSortField, wdSortDir);
   tb.innerHTML = sorted.map(function(w, i){
     return '<tr>'+
       '<td style="color:var(--muted)">'+(i+1)+'</td>'+
@@ -263,13 +251,15 @@ function renderWd(){
   }).join('');
 }
 
-// ── Рендер таблицы депозитов ──────────────────────────────────────────────
+// ── Рендер депозитов ──────────────────────────────────────────────────────
 function renderDep(){
-  var tb=document.getElementById('DEP-TB'), em=document.getElementById('DEP-EM');
+  var tb = document.getElementById('DEP-TB');
+  var em = document.getElementById('DEP-EM');
   if(!tb) return;
+  updateWdArrows('data-sort-dep', depSortField, depSortDir);
   if(!deposits.length){ tb.innerHTML=''; em.style.display=''; return; }
-  em.style.display='none';
-  var sorted = applySortDep(deposits);
+  em.style.display = 'none';
+  var sorted = applySort(deposits, depSortField, depSortDir);
   tb.innerHTML = sorted.map(function(d, i){
     return '<tr>'+
       '<td style="color:var(--muted)">'+(i+1)+'</td>'+
