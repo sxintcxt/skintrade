@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>SaintCAT Trades</title>
+<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,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AA4AAAAAAAAAAAAAAAAAAAAAAAAAcQAAAOQAAADxAAAA/wAAAP8AAAB+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5AAAA4AAAAP8AAAD/AAAA/wAAAP0AAADNAAAAGQAAABkAAADNAAAA/QAAAP8AAAD/AAAA/wAAAOAAAAA5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABxAAAA5QAAAOEAAADgAAAA2gAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABOAAAA4AAAAP8AAAD/AAAA/wAAAPAAAACNAAAAjQAAAPAAAAD/AAAA/wAAAP8AAADhAAAATgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAfAAAAHwAAAB8AAAAaAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAtQAAAPYAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD2AAAAtQAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAXAAAALMAAADnAAAA+wAAAPsAAADnAAAAswAAAF0AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///AD///gAf//wAD//4AAY/8AAAHPABAAhgAAIAIAADgAAAA8AAAAPjAAAD/4AAA//AAQP+AAAD+AAAB/AAAA/gAAAfwAAAP4AAAP+BCAP/AAAB/wAAAP8ACAB/AQAIBwAADAcAAA4HgQgeB4AAHgfAAD4H4AB+B/AA///4Af/8=">
+<style>
+:root{--bg:#0f1117;--surf:#161b22;--surf2:#1c2333;--brd:#30363d;--txt:#e6edf3;--muted:#7d8590;--green:#3fb950;--red:#f85149;--blue:#58a6ff;--yel:#e3b341;--acc:#238636}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px}
+.hdr{background:var(--surf);border-bottom:1px solid var(--brd);padding:11px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:15px;font-weight:600;margin-right:4px;letter-spacing:1px}
+.badge{font-size:11px;padding:2px 9px;border-radius:12px;border:1px solid var(--brd);color:var(--muted)}
+.badge.ok{border-color:var(--green);color:var(--green)}
+.badge.err{border-color:var(--yel);color:var(--yel)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:12px 20px;position:sticky;top:49px;z-index:150;background:var(--bg);border-bottom:1px solid var(--brd)}
+.stat{background:var(--surf);border:1px solid var(--brd);border-radius:8px;padding:10px 14px}
+.slbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.sval{font-size:20px;font-weight:600}
+.g{color:var(--green)}.r{color:var(--red)}
+.tb{padding:8px 20px 4px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{border:none;border-radius:6px;padding:7px 15px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit}
+.btna{background:var(--acc);color:#fff}.btna:hover{background:#2ea043}
+.btns{background:var(--surf);color:var(--txt);border:1px solid var(--brd)}.btns:hover{background:var(--surf2)}
+.fi{margin-left:auto}
+.fi input{background:var(--surf);border:1px solid var(--brd);color:var(--txt);border-radius:6px;padding:6px 11px;font-size:13px;width:180px;outline:none}
+.fi input:focus{border-color:var(--blue)}
+.tw{padding:0 20px 30px;overflow-x:auto;overflow-y:visible}
+table{width:100%;border-collapse:collapse;min-width:900px}
+th{background:var(--surf);border:1px solid var(--brd);padding:7px 7px;text-align:center;font-weight:500;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;position:sticky;z-index:100}
+th.g2{background:var(--surf2);text-align:center}
+tbody td{border:1px solid var(--brd);padding:3px 5px;background:var(--bg);vertical-align:middle;text-align:center;overflow:visible}
+tbody tr:hover td{background:#1a2233}
+.ci{text-align:center;color:var(--muted);width:32px;font-size:12px}
+.cm{font-family:monospace;text-align:right;padding-right:8px;font-size:12px;white-space:nowrap}
+td input[type=text],td input[type=number]{background:transparent;border:none;color:var(--txt);font-size:13px;font-family:inherit;width:100%;outline:none;padding:1px 3px;border-radius:3px;text-align:center}
+td input:focus{background:var(--surf2)}
+td input[type=number]{font-family:monospace;text-align:center}
+td select{background:transparent;border:none;color:var(--txt);font-size:13px;font-family:inherit;width:100%;outline:none;cursor:pointer;padding:1px 2px;text-align:center}
+td select option{background:#1c2333}
+.bi{color:var(--blue)!important}.gi{color:var(--green)!important}.yi{color:var(--yel)!important}
+.db{background:none;border:none;color:var(--muted);cursor:pointer;font-size:18px;padding:0 3px;line-height:1;border-radius:3px}
+.db:hover{color:var(--red)}
+.pos{color:var(--green);font-weight:600;font-family:monospace}
+.neg{color:var(--red);font-weight:600;font-family:monospace}
+.dash{color:var(--muted);font-family:monospace}
+.acw{position:relative}
+.acd{position:fixed;min-width:280px;max-width:420px;background:#1c2333;border:1px solid var(--brd);border-radius:8px;min-height:140px;max-height:280px;overflow-y:auto;z-index:99999;box-shadow:0 8px 32px rgba(0,0,0,.85)}
+.aci{padding:10px 12px;cursor:pointer;font-size:13px;color:var(--txt);border-bottom:1px solid var(--brd);line-height:1.3}
+.aci:last-child{border-bottom:none}
+.aci:hover,.aci.on{background:var(--surf)}
+.empty{text-align:center;padding:50px 20px;color:var(--muted)}
+.empty b{display:block;font-size:15px;font-weight:500;color:var(--txt);margin-bottom:6px}
+/* Auth overlay */
+.auth-overlay{position:fixed;inset:0;background:rgba(10,11,15,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999999;gap:20px}
+.auth-overlay h1{font-size:22px;font-weight:700;letter-spacing:2px;color:var(--txt)}
+.auth-overlay p{font-size:13px;color:var(--muted);text-align:center;max-width:320px;line-height:1.6}
+.btn-google{display:flex;align-items:center;gap:10px;background:#fff;color:#333;border:none;border-radius:8px;padding:11px 24px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;transition:background .15s}
+.btn-google:hover{background:#f0f0f0}
+.btn-google svg{width:20px;height:20px;flex-shrink:0}
+.user-info{display:flex;align-items:center;gap:8px;margin-left:auto}
+.user-avatar{width:28px;height:28px;border-radius:50%;border:1px solid var(--brd)}
+.btn-signout{background:none;border:1px solid var(--brd);color:var(--muted);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit}
+.btn-signout:hover{color:var(--red);border-color:var(--red)}
+.btn-save{background:#1a3a5c;color:var(--blue);border:1px solid var(--blue)}.btn-save:hover{background:#1e4a75}
+.btn-reset{background:#2a1a1a;color:var(--red);border:1px solid var(--red)}.btn-reset:hover{background:#3a2020}
+.btn-admin{background:#2a1a3a;color:#c084fc;border:1px solid #7c3aed}.btn-admin:hover{background:#3b1f52}
+/* Чекбоксы */
+.chk{width:16px;height:16px;cursor:pointer;accent-color:var(--green);margin:0}
+.chk-free{accent-color:var(--blue)}
+td.chk-cell{text-align:center;padding:2px}
+/* Вкладки */
+.tabs{display:flex;gap:0;padding:0 20px;border-bottom:1px solid var(--brd)}
+.tab{background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);padding:10px 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s;margin-bottom:-1px}
+.tab:hover{color:var(--txt)}
+.tab.on{color:var(--txt);border-bottom-color:var(--acc)}
+.tab-panel{display:none}
+.tab-panel.on{display:block}
+/* Модалка вывода */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9000;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-bg.open{display:flex}
+.modal{background:var(--surf);border:1px solid var(--brd);border-radius:12px;padding:24px;width:100%;max-width:420px;position:relative}
+.modal h3{font-size:15px;font-weight:600;margin-bottom:16px}
+.modal-x{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;line-height:1}
+.modal-x:hover{color:var(--red)}
+.mrow{margin-bottom:12px}
+.mlbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.minp{width:100%;background:var(--surf2);border:1px solid var(--brd);color:var(--txt);border-radius:6px;padding:8px 10px;font-size:13px;font-family:inherit;outline:none}
+.minp:focus{border-color:var(--blue)}
+.mcalc{background:var(--surf2);border-radius:8px;padding:12px 14px;margin:14px 0}
+.mcalc-row{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:4px}
+.mcalc-row.total{color:var(--green);font-weight:600;font-size:13px;border-top:1px solid var(--brd);padding-top:8px;margin-top:6px;margin-bottom:0}
+.mavail{font-size:11px;color:var(--yel);margin-top:3px}
+/* Таблица выводов */
+.wt{width:100%;border-collapse:collapse;font-size:13px;min-width:600px}
+.wt th{background:var(--surf);border:1px solid var(--brd);padding:8px 10px;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;text-align:center}
+.wt td{border:1px solid var(--brd);padding:7px 10px;text-align:center;background:var(--bg)}
+.wt tr:hover td{background:#1a2233}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--surf2);border:1px solid var(--brd);color:var(--txt);padding:10px 20px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .3s;z-index:99999;pointer-events:none}
+/* Admin panel overlay */
+.admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99998;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto}
+.admin-overlay.open{display:flex}
+.admin-panel{background:var(--surf);border:1px solid #7c3aed44;border-radius:14px;width:100%;max-width:820px;padding:24px;margin:auto}
+.admin-panel h2{font-size:16px;font-weight:600;color:#c084fc;margin-bottom:4px;letter-spacing:1px}
+.admin-panel .sub{font-size:12px;color:var(--muted);margin-bottom:20px}
+.admin-close{float:right;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;line-height:1;margin-top:-4px}
+.admin-close:hover{color:var(--red)}
+.user-list{display:grid;gap:10px}
+.user-card{background:var(--bg);border:1px solid var(--brd);border-radius:10px;padding:14px 16px;cursor:pointer;transition:border-color .15s}
+.user-card:hover{border-color:#7c3aed88}
+.user-card.active{border-color:#7c3aed;background:#1a0f2a}
+.user-card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.user-card-avatar{width:32px;height:32px;border-radius:50%;border:1px solid var(--brd);flex-shrink:0}
+.user-card-name{font-size:13px;font-weight:500}
+.user-card-email{font-size:11px;color:var(--muted)}
+.user-card-last{font-size:10px;color:var(--muted);margin-left:auto;white-space:nowrap}
+.user-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.user-stat{background:var(--surf);border-radius:6px;padding:8px 10px;text-align:center}
+.user-stat-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.user-stat-val{font-size:14px;font-weight:600}
+.admin-trades{margin-top:14px;overflow-x:auto}
+.admin-trades table{width:100%;border-collapse:collapse;font-size:11px;min-width:600px}
+.admin-trades th{background:var(--surf2);border:1px solid var(--brd);padding:6px 8px;text-align:center;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.admin-trades td{border:1px solid var(--brd);padding:5px 8px;text-align:center;color:var(--txt)}
+.admin-loading{text-align:center;padding:30px;color:var(--muted);font-size:13px}
+
+/* ── Mobile ────────────────────────────────────────────────────────────── */
+@media(max-width:768px){
+  html{-webkit-text-size-adjust:100%}
+  .hdr{padding:10px 14px;gap:8px}
+  .logo{font-size:13px}
+  .badge{font-size:10px;padding:2px 7px}
+  .user-info{gap:6px}
+  .user-avatar{width:26px;height:26px}
+  #userName{display:none}
+  .stats{grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 12px}
+  .stat{padding:8px 10px}
+  .slbl{font-size:9px}
+  .sval{font-size:17px}
+  .tb{padding:6px 12px 6px;gap:6px;flex-wrap:wrap}
+  .btn{padding:8px 11px;font-size:12px}
+  .fi{margin-left:0;width:100%}
+  .fi input{width:100%;font-size:13px}
+  .tw{padding:0 0 24px;-webkit-overflow-scrolling:touch;overflow-x:auto}
+  table{font-size:11px;min-width:900px}
+  th{padding:5px 4px;font-size:9px;white-space:nowrap}
+  th.g2{font-size:9px}
+  tbody td{padding:4px 3px}
+  td input[type=text],td input[type=number]{font-size:11px;padding:1px 2px}
+  td select{font-size:11px}
+  .acd{min-width:240px;max-width:95vw;max-height:200px}
+  .aci{padding:9px 10px;font-size:12px}
+  .toast{bottom:16px;right:50%;transform:translateX(50%);white-space:nowrap}
+  thead th{top:0}
+  .db{font-size:16px;padding:0 4px}
+}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--brd);border-radius:3px}
+</style>
+</head>
+<body>
+
+<!-- Auth overlay -->
+<div class="auth-overlay" id="authOverlay">
+  <h1>🐱 SaintCAT Trades</h1>
+  <p>Войдите через Google чтобы получить доступ к вашим сделкам с любого устройства</p>
+  <button class="btn-google" id="signInBtn">
+    <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.7 2.5 30.2 0 24 0 14.8 0 6.9 5.4 3 13.3l7.8 6C12.7 13 17.9 9.5 24 9.5z"/><path fill="#4285F4" d="M46.6 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8C43.7 37.3 46.6 31.4 46.6 24.5z"/><path fill="#FBBC05" d="M10.8 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7L2.5 13.3A23.9 23.9 0 0 0 0 24c0 3.8.9 7.4 2.5 10.6l8.3-5.9z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.1 0-11.3-4.1-13.2-9.7l-8.3 5.9C6.9 42.6 14.8 48 24 48z"/></svg>
+    Войти через Google
+  </button>
+</div>
+
+<div class="hdr">
+  <span class="logo">🐱 SaintCAT Trades</span>
+  <span class="badge ok" id="apibadge">451 скинов загружено</span>
+  <span class="badge" id="dbbadge">● Подключение...</span>
+  <div class="user-info" id="userInfo" style="display:none">
+    <img class="user-avatar" id="userAvatar" src="" alt="">
+    <span style="font-size:12px;color:var(--muted)" id="userName"></span>
+    <button class="btn btn-admin" id="adminBtn" style="display:none" onclick="openAdmin()">⚙ Админ</button>
+    <button class="btn-signout" id="signOutBtn">Выйти</button>
+  </div>
+  <span id="rc" style="font-size:11px;color:var(--muted)"></span>
+</div>
+
+<!-- Admin panel -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-panel">
+    <button class="admin-close" onclick="closeAdmin()">×</button>
+    <h2>⚙ АДМИН ПАНЕЛЬ</h2>
+    <div class="sub">Статистика всех пользователей</div>
+    <div class="user-list" id="adminUserList">
+      <div class="admin-loading">Загрузка пользователей...</div>
+    </div>
+  </div>
+</div>
+
+<div class="stats" style="grid-template-columns:repeat(6,1fr)">
+  <div class="stat"><div class="slbl">Вложено</div><div class="sval" id="s-bought">$0.00</div></div>
+  <div class="stat"><div class="slbl">Продано</div><div class="sval" id="s-sold">$0.00</div></div>
+  <div class="stat"><div class="slbl">Прибыль</div><div class="sval" id="s-profit">$0.00</div></div>
+  <div class="stat"><div class="slbl">Ожидается</div><div class="sval" id="s-pending">$0.00</div></div>
+  <div class="stat"><div class="slbl">Выведено</div><div class="sval" id="s-withdrawn">$0.00</div></div>
+  <div class="stat"><div class="slbl">Общ. капитал</div><div class="sval" id="s-total">$0.00</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab on" id="tab-trades" onclick="switchTab('trades')">📋 Сделки</button>
+  <button class="tab" id="tab-wd" onclick="switchTab('wd')">💸 Выводы</button>
+</div>
+
+<!-- TAB: Сделки -->
+<div class="tab-panel on" id="panel-trades">
+<div class="tb">
+  <button class="btn btna" id="addBtn">+ Добавить сделку</button>
+  <button class="btn btns" id="csvBtn">↓ CSV</button>
+  <button class="btn btns" id="importBtn">↑ Импорт CSV</button>
+  <button class="btn btn-save" id="saveBtn" style="display:none" onclick="saveNow()">💾 Сохранить</button>
+  <button class="btn btn-reset" id="resetBtn" style="display:none" onclick="resetChanges()">↩ Сбросить</button>
+  <input type="file" id="importFile" accept=".csv" style="display:none">
+  <div class="fi"><input type="text" id="flt" placeholder="Поиск по таблице..."></div>
+</div>
+<div class="tw">
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2" style="width:32px">#</th>
+        <th colspan="5" class="g2">&#8212; Скин &#8212;</th>
+        <th colspan="2" class="g2" style="color:var(--blue)">&#8212; Покупка &#8212;</th>
+        <th colspan="3" class="g2" style="color:var(--green)">&#8212; Продажа &#8212;</th>
+        <th colspan="2" class="g2 col-trade" style="color:var(--yel)">&#8212; Комиссии &#8212;</th>
+        <th colspan="2" class="g2" style="color:var(--yel)">&#8212; Прибыль &#8212;</th>
+        <th rowspan="2" style="width:28px"></th>
+      </tr>
+      <tr>
+        <th style="min-width:190px">Название</th>
+        <th class="col-type" style="min-width:85px">Тип</th>
+        <th style="min-width:105px">Состояние</th>
+        <th class="col-float" style="min-width:74px">Флоат</th>
+        <th class="col-pattern" style="min-width:52px">Паттерн</th>
+        <th class="col-bplat" style="min-width:94px;color:var(--blue)">Платформа</th>
+        <th style="min-width:80px;color:var(--blue)">Цена $</th>
+        <th class="col-splat" style="min-width:94px;color:var(--green)">Платформа</th>
+        <th style="min-width:80px;color:var(--green)">Цена $</th>
+        <th style="min-width:52px;color:var(--green)">Продано</th>
+        <th class="col-trade" style="min-width:60px;color:var(--yel)">Сделка</th>
+        <th class="col-trade" style="min-width:60px;color:var(--yel)">Вывод %</th>
+        <th style="min-width:86px;color:var(--yel)">Грязная $</th>
+        <th style="min-width:86px;color:var(--yel)">Чистая $</th>
+      </tr>
+    </thead>
+    <tbody id="TB"></tbody>
+  </table>
+  <div id="EM" class="empty"><b>Нет сделок</b>Нажмите «+ Добавить сделку»</div>
+</div>
+</div>
+
+<!-- TAB: Выводы -->
+<div class="tab-panel" id="panel-wd">
+<div class="tb">
+  <button class="btn btna" onclick="openWdModal()">+ Зафиксировать вывод</button>
+</div>
+<div class="tw">
+  <table class="wt">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Дата</th>
+        <th>Платформа</th>
+        <th>Выведено $</th>
+        <th>Комиссия $</th>
+        <th>Получено $</th>
+        <th>Комментарий</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="WD-TB"></tbody>
+  </table>
+  <div id="WD-EM" class="empty"><b>Нет выводов</b>Нажмите «+ Зафиксировать вывод»</div>
+</div>
+</div>
+
+<!-- Modal: Вывод средств -->
+<div class="modal-bg" id="wdModal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeWdModal()">×</button>
+    <h3>💸 Зафиксировать вывод</h3>
+    <div class="mrow">
+      <div class="mlbl">Платформа</div>
+      <select class="minp" id="wd-plat" onchange="updWdCalc()">
+        <option>CS.MONEY</option>
+        <option>CSFloat</option>
+        <option>Buff163</option>
+      </select>
+    </div>
+    <div class="mrow">
+      <div class="mlbl">Сумма вывода $</div>
+      <input type="number" class="minp" id="wd-amount" step="0.01" min="0" placeholder="0.00" oninput="updWdCalc()">
+      <div class="mavail" id="wd-avail"></div>
+    </div>
+    <div class="mrow">
+      <div class="mlbl">Дата</div>
+      <input type="date" class="minp" id="wd-date">
+    </div>
+    <div class="mrow">
+      <div class="mlbl">Комментарий</div>
+      <input type="text" class="minp" id="wd-note" placeholder="Необязательно...">
+    </div>
+    <div class="mcalc" id="wd-calc" style="display:none">
+      <div class="mcalc-row"><span>Сумма вывода</span><span id="wdc-amount">$0.00</span></div>
+      <div class="mcalc-row"><span>Комиссия платформы</span><span id="wdc-fee">$0.00</span></div>
+      <div class="mcalc-row total"><span>Придёт на руки</span><span id="wdc-net">$0.00</span></div>
+    </div>
+    <button class="btn btna" style="width:100%;padding:10px" onclick="confirmWd()">Подтвердить вывод</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var SKINS = []; // загружается через API
+var PLAT_BUY  = ['Buff163','CS.MONEY','CSFloat','Бесплатно'];
+var PLAT_SELL = ['CS.MONEY','CSFloat','Buff163'];
+var WEAR = ['Factory New','Minimal Wear','Field-Tested','Well-Worn','Battle-Scarred'];
+var TYPE = ['Normal','StatTrak','Souvenir'];
+
+// Комиссии платформ для сделок: [trade%, withdraw%]
+// $1.2 фиксированная часть CS.MONEY считается только при выводе средств
+var PLAT_FEES = {
+  'Buff163':  [2.5, 0,   0],
+  'CS.MONEY': [5,   1.5, 0],
+  'CSFloat':  [2,   0,   0]
+};
+
+// Флоат диапазоны для каждого состояния [min, max)
+var WEAR_RANGES = {
+  'Factory New':    [0,    0.07],
+  'Minimal Wear':   [0.07, 0.15],
+  'Field-Tested':   [0.15, 0.38],
+  'Well-Worn':      [0.38, 0.45],
+  'Battle-Scarred': [0.45, 1.0]
+};
+
+function getPlatFees(plat){ return PLAT_FEES[plat] || [5, 0, 0]; }
+
+// Определить состояние по флоату
+function wearFromFloat(f){
+  var v = parseFloat(f);
+  if(isNaN(v)) return null;
+  var ranges = WEAR_RANGES;
+  for(var w in ranges){
+    if(v >= ranges[w][0] && v < ranges[w][1]) return w;
+  }
+  if(v >= 0.45) return 'Battle-Scarred';
+  return null;
+}
+
+// Получить допустимый диапазон флоата для состояния
+function floatRangeForWear(wear){ return WEAR_RANGES[wear] || [0, 1]; }
+
+var rows = [], rid = 0, fq = '', acel = null;
+var withdrawals = [], wid = 0;
+var wdRef = null;
+
+// Try fetch full list in background
+fetch('https://raw.githubusercontent.com/ByMykel/CSGO-API/main/public/api/en/skins.json')
+  .then(function(r){ return r.json(); })
+  .then(function(d){
+    SKINS = d.map(function(s){ return s.name; });
+    var b = document.getElementById('apibadge');
+    b.textContent = SKINS.length.toLocaleString() + ' скинов (онлайн)';
+    b.className = 'badge ok';
+  }).catch(function(){});
+
+// ── Firebase ──────────────────────────────────────────────────────────────
+var firebaseConfig = {
+  apiKey: "AIzaSyDVsbGbJsbmGNr042hWiD-X0d2eAIh7qFk",
+  authDomain: "sxintcxt-skintrade.firebaseapp.com",
+  databaseURL: "https://sxintcxt-skintrade-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "sxintcxt-skintrade",
+  storageBucket: "sxintcxt-skintrade.firebasestorage.app",
+  messagingSenderId: "53025622376",
+  appId: "1:53025622376:web:b1ee03f11ecc1f98616edd"
+};
+
+var fbApp, fbDb, fbRef, fbLogRef;
+var fbReady = false;
+var userIp = '—';
+var pendingChanges = [];
+var rowsSnapshot = '';
+
+// Получаем IP при загрузке
+fetch('https://api.ipify.org?format=json')
+  .then(function(r){ return r.json(); })
+  .then(function(d){ userIp = d.ip || '—'; })
+  .catch(function(){ userIp = '—'; });
+
+function setBadgeDB(state){
+  var b = document.getElementById('dbbadge');
+  if(!b) return;
+  if(state === 'ok'){ b.textContent = '● Firebase'; b.className = 'badge ok'; }
+  else { b.textContent = '● Офлайн (локально)'; b.className = 'badge err'; }
+}
+
+// Записать событие в лог Firebase
+function writeLog(action, details){
+  if(!fbLogRef) return;
+  var user = fbAuth ? fbAuth.currentUser : null;
+  fbLogRef.push({
+    event: action,
+    details: details || '',
+    user: user ? (user.displayName || user.email) : '—',
+    email: user ? user.email : '—',
+    ip: userIp,
+    time: new Date().toISOString()
+  }).catch(function(e){ console.error('Log error:', e); });
+}
+
+// Обновить кнопки сохранения
+function updSaveBtns(){
+  var hasPending = pendingChanges.length > 0;
+  var sb = document.getElementById('saveBtn');
+  var rb = document.getElementById('resetBtn');
+  if(sb) sb.style.display = hasPending ? 'inline-block' : 'none';
+  if(rb) rb.style.display = hasPending ? 'inline-block' : 'none';
+}
+
+// Локальный черновик — только localStorage, Firebase НЕ трогаем
+function save(){
+  try{ localStorage.setItem('cs2r_bak', JSON.stringify(rows)); }catch(e){}
+}
+
+// Явное сохранение с логом
+function saveNow(){
+  if(!fbReady){ alert('Нет подключения к Firebase'); return; }
+  var obj = {};
+  rows.forEach(function(r){ obj['r'+r.id] = r; });
+  fbRef.set(obj).then(function(){
+    pendingChanges.forEach(function(ch){ writeLog(ch.action, ch.details); });
+    pendingChanges = [];
+    rowsSnapshot = JSON.stringify(rows);
+    updSaveBtns();
+    showToast('✓ Сохранено');
+  }).catch(function(e){ alert('Ошибка сохранения: ' + e.message); });
+}
+
+function showToast(msg){
+  var t = document.getElementById('toast');
+  if(!t) return;
+  t.textContent = msg;
+  t.style.opacity = '1';
+  setTimeout(function(){ t.style.opacity = '0'; }, 2500);
+}
+
+// Сброс несохранённых изменений
+function resetChanges(){
+  if(!confirm('Сбросить все несохранённые изменения?')) return;
+  try{ rows = JSON.parse(rowsSnapshot); rid = rows.reduce(function(m,r){ return Math.max(m,r.id); },0); }catch(e){ rows=[]; }
+  pendingChanges = [];
+  updSaveBtns();
+  render();
+  showToast('↩ Изменения сброшены');
+}
+
+function loadLocal(){
+  try{
+    var s = localStorage.getItem('cs2r_bak');
+    if(s){ rows = JSON.parse(s); rid = rows.reduce(function(m,r){ return Math.max(m,r.id); },0); }
+  }catch(e){}
+}
+
+function mkRow(){
+  var fees = getPlatFees('CS.MONEY');
+  return { id: ++rid, skin:'', type:'Normal', wear:'Field-Tested', fl:'0.15', pat:'',
+           bp:'Buff163', bpr:'',
+           sp:'CS.MONEY', spr:'', sold:false,
+           tf:fees[0], wf:fees[1], wfFixed:fees[2] };
+}
+
+function addRow(){
+  var r = mkRow();
+  rows.push(r);
+  pendingChanges.push({ action: 'ADD', details: 'Добавлена новая сделка #' + r.id });
+  updSaveBtns();
+  save();
+  render();
+  setTimeout(function(){
+    var el = document.getElementById('si'+r.id);
+    if(el){ el.focus(); el.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }, 80);
+}
+
+function delRow(id){
+  var r = rows.find(function(r){ return r.id===id; });
+  var skinName = r ? (r.skin || 'без названия') : '—';
+  if(!confirm('Удалить сделку "' + skinName + '"?\n\nЭто действие нельзя отменить без сброса изменений.')) return;
+  rows = rows.filter(function(r){ return r.id !== id; });
+  pendingChanges.push({ action: 'DELETE', details: 'Удалена сделка #' + id + ' — ' + skinName });
+  updSaveBtns();
+  save();
+  render();
+}
+
+function upd(id, f, v){
+  var r = rows.find(function(r){ return r.id===id; });
+  if(!r) return;
+  var fieldNames = {skin:'Скин',type:'Тип',wear:'Состояние',fl:'Флоат',pat:'Паттерн',bp:'Платф.покупки',bpr:'Цена покупки',sp:'Платф.продажи',spr:'Цена продажи',sold:'Продано',free:'Бесплатно',tf:'Комис.сделки',wf:'Комис.вывода'};
+  if(fieldNames[f] && String(r[f]) !== String(v)){
+    var oldVal = r[f];
+    r[f] = v;
+    pendingChanges.push({ action: 'EDIT', details: 'Сделка #'+id+' ('+( r.skin||'—')+'): '+fieldNames[f]+' "'+oldVal+'" → "'+v+'"' });
+    updSaveBtns();
+  } else {
+    r[f] = v;
+  }
+
+  // Авто-комиссии при смене платформы продажи
+  if(f === 'sp'){
+    var fees = getPlatFees(v);
+    r.tf = fees[0]; r.wf = fees[1]; r.wfFixed = fees[2];
+    var etf = document.getElementById('tf'+id), ewf = document.getElementById('wf'+id);
+    if(etf) etf.textContent = fees[0]+'%';
+    if(ewf) ewf.textContent = fees[1] > 0 ? fees[1]+'%' : '—';
+  }
+
+  // Бесплатно — блокировать/разблокировать цену покупки
+  if(f === 'bp'){
+    var bprEl = document.getElementById('bpr'+id);
+    if(bprEl){
+      if(v === 'Бесплатно'){
+        bprEl.disabled = true;
+        bprEl.value = '';
+        bprEl.placeholder = 'Бесплатно';
+        bprEl.style.color = 'var(--muted)';
+        bprEl.style.opacity = '0.5';
+        r.bpr = '';
+      } else {
+        bprEl.disabled = false;
+        bprEl.placeholder = '0.00';
+        bprEl.style.color = '';
+        bprEl.style.opacity = '';
+      }
+    }
+  }
+
+  // Синхронизация флоат → состояние (без ограничений во время набора)
+  if(f === 'fl'){
+    var fv = parseFloat(v);
+    if(!isNaN(fv) && fv >= 0 && fv <= 1){
+      var detected = wearFromFloat(fv);
+      if(detected && detected !== r.wear){
+        r.wear = detected;
+        var ew = document.getElementById('wr'+id);
+        if(ew) ew.value = detected;
+      }
+    }
+  }
+
+  // Синхронизация состояние → флоат: подставить минимум диапазона
+  if(f === 'wear'){
+    var range = floatRangeForWear(v);
+    var curfl = parseFloat(r.fl);
+    if(isNaN(curfl) || curfl < range[0] || curfl >= range[1]){
+      r.fl = range[0].toFixed(3);
+      var efl3 = document.getElementById('fl'+id);
+      if(efl3) efl3.value = r.fl;
+    }
+  }
+
+  save(); updS();
+}
+
+function dirty(r){
+  var s = parseFloat(r.spr);
+  if(!s || isNaN(s)) return null;
+  return s * (1 - r.tf/100) * (1 - r.wf/100);
+}
+function clean(r){
+  var d = dirty(r);
+  if(d === null) return null;
+  var bp = r.bp === 'Бесплатно' ? 0 : (parseFloat(r.bpr) || 0);
+  return d - bp;
+}
+function fmn(n, sign){
+  if(n===null || n===undefined) return '&#8212;';
+  var abs = '$' + Math.abs(n).toFixed(2);
+  if(sign){ return (n>0?'+':n<0?'-':'') + abs; }
+  return (n<0?'-':'') + abs;
+}
+function pc(n){ return n===null?'dash':n>0?'pos':'neg'; }
+
+function updS(){
+  var bought=0, soldDirty=0, profit=0, pending=0, dirtyAll=0;
+  rows.forEach(function(r){
+    var bp = r.bp === 'Бесплатно' ? 0 : (parseFloat(r.bpr)||0);
+    var d = dirty(r), c = clean(r);
+    // Вложено = цены платных покупок + грязная прибыль бесплатных
+    if(r.bp !== 'Бесплатно'){
+      bought += bp;
+    } else {
+      if(d !== null) bought += d;
+    }
+    if(r.sold && d !== null) soldDirty += d;
+    if(r.sold && r.bp !== 'Бесплатно' && c !== null) profit += c;
+    if(!r.sold && c !== null) pending += c;
+    if(d !== null) dirtyAll += d;
+  });
+
+  // Выводы
+  var totalWithdrawn = 0, totalWdFee = 0;
+  withdrawals.forEach(function(w){ totalWithdrawn += w.net; totalWdFee += w.fee; });
+
+  // Общий капитал = грязная всех сделок − комиссии выводов (1.5%+$1.2 за каждый)
+  var totalCapital = dirtyAll - totalWdFee;
+
+  function setN(id, val){
+    var el=document.getElementById(id); if(!el) return;
+    el.textContent='$'+val.toFixed(2); el.className='sval';
+  }
+  function setC(id, val){
+    var el=document.getElementById(id); if(!el) return;
+    el.textContent=(val>=0?'+':'-')+'$'+Math.abs(val).toFixed(2);
+    el.className='sval '+(val>=0?'g':'r');
+  }
+  setN('s-bought', bought);
+  setN('s-sold', soldDirty);
+  setC('s-profit', profit);
+  setC('s-pending', pending);
+  setN('s-withdrawn', totalWithdrawn);
+  setN('s-total', totalCapital);
+
+  rows.forEach(function(r){
+    var de=document.getElementById('d'+r.id), ce=document.getElementById('c'+r.id);
+    var d=dirty(r), c=clean(r);
+    if(de){ de.innerHTML=fmn(d,false); de.className='cm '+pc(d); }
+    if(ce){ ce.innerHTML=fmn(c,true); ce.className='cm '+pc(c); }
+  });
+}
+
+// Autocomplete
+function closeAC(){ if(acel){ acel.remove(); acel=null; } }
+document.addEventListener('click', function(e){ if(!e.target.closest('.acw')) closeAC(); });
+
+function showAC(inp, id){
+  closeAC();
+  var q = inp.value.trim().toLowerCase();
+  if(q.length < 2) return;
+  var words = q.split(/\s+/);
+  var hits = SKINS.filter(function(s){
+    var sl = s.toLowerCase().replace(/\s*\|\s*/g,' ');
+    return words.every(function(w){ return sl.indexOf(w) !== -1; });
+  }).slice(0,40);
+  if(!hits.length) return;
+  var list = document.createElement('div');
+  list.className = 'acd';
+  // Position using fixed coords from input bounding rect
+  var rect = inp.getBoundingClientRect();
+  list.style.top  = (rect.bottom + 3) + 'px';
+  list.style.left = rect.left + 'px';
+  list.style.width = Math.max(rect.width, 280) + 'px';
+  hits.forEach(function(s, i){
+    var d = document.createElement('div');
+    d.className = 'aci' + (i===0?' on':'');
+    d.textContent = s;
+    d.onmousedown = function(e){
+      e.preventDefault();
+      inp.value = s;
+      upd(id, 'skin', s);
+      closeAC();
+    };
+    list.appendChild(d);
+  });
+  document.body.appendChild(list);
+  acel = list;
+}
+
+function acKey(e, id){
+  if(!acel) return;
+  var items = acel.querySelectorAll('.aci');
+  var idx = -1;
+  items.forEach(function(d,i){ if(d.classList.contains('on')) idx=i; });
+  if(e.key==='ArrowDown'){ e.preventDefault(); if(idx<items.length-1){ if(idx>=0) items[idx].classList.remove('on'); items[idx+1].classList.add('on'); items[idx+1].scrollIntoView({block:'nearest'}); } }
+  if(e.key==='ArrowUp'){ e.preventDefault(); if(idx>0){ items[idx].classList.remove('on'); items[idx-1].classList.add('on'); items[idx-1].scrollIntoView({block:'nearest'}); } }
+  if(e.key==='Enter' && idx>=0){ e.preventDefault(); items[idx].onmousedown(e); }
+  if(e.key==='Escape') closeAC();
+}
+
+function mkSel(opts, val, id, f, cls){
+  var s = document.createElement('select');
+  if(cls) s.className = cls;
+  s.onchange = function(){ upd(id, f, this.value); };
+  opts.forEach(function(o){
+    var op = document.createElement('option');
+    op.value = o; op.textContent = o;
+    if(o===val) op.selected = true;
+    s.appendChild(op);
+  });
+  return s;
+}
+
+function mkInp(type, val, cls, onch, style){
+  var i = document.createElement('input');
+  i.type = type; i.value = val||'';
+  if(cls) i.className = cls;
+  if(style) i.setAttribute('style', style);
+  if(type==='number') i.step='0.01';
+  i.oninput = onch;
+  return i;
+}
+
+function render(){
+  var tb = document.getElementById('TB'), em = document.getElementById('EM');
+  var vis = fq ? rows.filter(function(r){ return r.skin.toLowerCase().indexOf(fq)!==-1; }) : rows;
+  document.getElementById('rc').textContent = rows.length + ' сделок';
+  if(!rows.length){ tb.innerHTML=''; em.style.display=''; return; }
+  em.style.display = 'none';
+  tb.innerHTML = '';
+
+  vis.forEach(function(r, i){
+    var d=dirty(r), c=clean(r);
+    var tr = document.createElement('tr');
+
+    function td(cls){ var t=document.createElement('td'); if(cls) t.className=cls; tr.appendChild(t); return t; }
+
+    td('ci').textContent = i+1;
+
+    // Skin autocomplete
+    var ts = td(); ts.style.minWidth='190px'; ts.style.maxWidth='215px';
+    var aw = document.createElement('div'); aw.className='acw';
+    var si = mkInp('text', r.skin, '', function(){ upd(r.id,'skin',this.value); showAC(this,r.id); }, '');
+    si.id = 'si'+r.id;
+    si.placeholder = 'AK-47 | Redline...';
+    si.onkeydown = function(e){ acKey(e, r.id); };
+    si.onblur = function(){ setTimeout(closeAC, 150); };
+    aw.appendChild(si); ts.appendChild(aw);
+
+    var tdType = td('col-type'); tdType.appendChild(mkSel(TYPE, r.type, r.id, 'type', ''));
+
+    var wearSel = mkSel(WEAR, r.wear, r.id, 'wear', '');
+    wearSel.id = 'wr'+r.id;
+    td().appendChild(wearSel);
+
+    var tf2=td('col-float'); tf2.style.maxWidth='92px';
+    var flInp = document.createElement('input');
+    flInp.type = 'number';
+    flInp.value = r.fl || '0.150';
+    flInp.min = '0';
+    flInp.max = '0.999999';
+    flInp.step = '0.000001';
+    flInp.id = 'fl'+r.id;
+    flInp.setAttribute('style','font-family:monospace;font-size:12px;text-align:right;width:100%;background:transparent;border:none;color:var(--txt);outline:none;padding:1px 3px');
+    flInp.oninput = function(){
+      var raw = this.value;
+      if(/^0{2,}/.test(raw)){ raw = raw.replace(/^0+/, '0'); this.value = raw; }
+      upd(r.id, 'fl', this.value);
+    };
+    flInp.onblur = (function(row){ return function(){
+      var v = parseFloat(this.value);
+      if(isNaN(v) || v < 0){ this.value = '0.000'; }
+      else if(v > 0.999){ this.value = '0.999'; }
+      upd(row.id, 'fl', this.value);
+    };})(r);
+    tf2.appendChild(flInp);
+
+    var tp=td('col-pattern'); tp.style.maxWidth='60px';
+    var patInp = mkInp('number', r.pat, '', function(){
+      var v = parseInt(this.value);
+      if(this.value !== '' && (isNaN(v) || v < 1)) v = 1;
+      if(v > 999) v = 999;
+      if(!isNaN(v)) this.value = v;
+      upd(r.id,'pat', isNaN(v)?'':v);
+    }, 'width:52px');
+    patInp.min='1'; patInp.max='999'; patInp.step='1';
+    patInp.placeholder='1-999';
+    tp.appendChild(patInp);
+
+    td('col-bplat').appendChild(mkSel(PLAT_BUY, r.bp, r.id, 'bp', 'bi'));
+
+    var tbp = td();
+    var isFree = r.bp === 'Бесплатно';
+    var ibp = mkInp('number', isFree ? '' : r.bpr, 'bi', function(){ upd(r.id,'bpr',this.value); updS(); }, '');
+    ibp.placeholder = isFree ? 'Бесплатно' : '0.00';
+    ibp.disabled = isFree;
+    ibp.id = 'bpr'+r.id;
+    if(isFree){ ibp.style.color='var(--muted)'; ibp.style.opacity='0.5'; }
+    tbp.appendChild(ibp);
+
+    var spSel = mkSel(PLAT_SELL, r.sp, r.id, 'sp', 'gi');
+    spSel.id = 'spl'+r.id;
+    td('col-splat').appendChild(spSel);
+
+    var tsp=td();
+    var isp=mkInp('number', r.spr, 'gi', function(){ upd(r.id,'spr',this.value); updS(); }, '');
+    isp.placeholder='0.00'; tsp.appendChild(isp);
+
+    // Чекбокс "Продано"
+    var tsold = td('chk-cell');
+    var chkSold = document.createElement('input');
+    chkSold.type = 'checkbox'; chkSold.className = 'chk';
+    chkSold.checked = !!r.sold;
+    chkSold.title = 'Скин продан';
+    chkSold.onchange = (function(row){ return function(){
+      upd(row.id, 'sold', this.checked);
+      updS();
+    };})(r);
+    tsold.appendChild(chkSold);
+
+    // Комиссия: показывать как читаемый лейбл (не редактируемый)
+    var fees = getPlatFees(r.sp);
+    var ttf=td('col-trade'); ttf.style.textAlign='right'; ttf.style.paddingRight='8px';
+    ttf.style.fontFamily='monospace'; ttf.style.fontSize='12px'; ttf.style.color='var(--yel)';
+    ttf.textContent = fees[0]+'%';
+    ttf.id = 'tf'+r.id;
+
+    var twf=td('col-trade'); twf.style.textAlign='right'; twf.style.paddingRight='8px';
+    twf.style.fontFamily='monospace'; twf.style.fontSize='12px'; twf.style.color='var(--yel)';
+    twf.id = 'wf'+r.id;
+    twf.textContent = fees[1] > 0 ? fees[1]+'%' : '—';
+
+    var tdd=td('cm '+pc(d)); tdd.id='d'+r.id; tdd.innerHTML=fmn(d,false);
+    var tcc=td('cm '+pc(c)); tcc.id='c'+r.id; tcc.innerHTML=fmn(c,true);
+
+    var tdel=td(); tdel.style.textAlign='center';
+    var btn=document.createElement('button'); btn.className='db'; btn.textContent='×';
+    btn.onclick=function(){ delRow(r.id); }; tdel.appendChild(btn);
+
+    tb.appendChild(tr);
+  });
+  updS();
+}
+
+function exportCSV(){
+  var h=['#','Скин','Тип','Состояние','Флоат','Паттерн','Платформа покупки','Цена покупки','Платформа продажи','Цена продажи','Комис.%','Вывод%','Получено','Прибыль'];
+  var body=rows.map(function(r,i){
+    var d=dirty(r), c=clean(r);
+    return [i+1,r.skin,r.type,r.wear,r.fl,r.pat,r.bp,r.bpr,r.sp,r.spr,r.tf+'%',r.wf+'%',d!=null?d.toFixed(2):'',c!=null?c.toFixed(2):''].map(function(v){ return '"'+v+'"'; }).join(',');
+  });
+  var csv='\uFEFF'+[h.join(',')].concat(body).join('\n');
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  a.download='CS2_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click();
+}
+
+document.getElementById('addBtn').addEventListener('click', addRow);
+document.getElementById('csvBtn').addEventListener('click', exportCSV);
+document.getElementById('flt').addEventListener('input', function(){ fq=this.value.toLowerCase(); render(); });
+document.getElementById('importBtn').addEventListener('click', function(){ document.getElementById('importFile').click(); });
+document.getElementById('importFile').addEventListener('change', importCSV);
+
+function importCSV(e){
+  var file = e.target.files[0];
+  if(!file) return;
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    var lines = ev.target.result.split('\n').filter(function(l){ return l.trim(); });
+    if(lines.length < 2){ alert('Файл пустой или неверный формат'); return; }
+    var imported = 0;
+    // Пропускаем заголовок (строка 0)
+    for(var i = 1; i < lines.length; i++){
+      var cols = lines[i].split(',').map(function(c){ return c.replace(/^"|"$/g,'').trim(); });
+      if(cols.length < 10) continue;
+      // Порядок: #, Скин, Тип, Состояние, Флоат, Паттерн, Платф.покупки, Цена покупки, Платф.продажи, Цена продажи, Комис%, Вывод%, Получено, Прибыль
+      var fees = getPlatFees(cols[8] || 'CS.MONEY');
+      var r = {
+        id: ++rid,
+        skin: cols[1]||'', type: cols[2]||'Normal', wear: cols[3]||'Field-Tested',
+        fl: cols[4]||'', pat: cols[5]||'',
+        bp: cols[6]||'Buff163', bpr: cols[7]||'',
+        sp: cols[8]||'CS.MONEY', spr: cols[9]||'',
+        tf: fees[0], wf: fees[1], wfFixed: fees[2]
+      };
+      rows.push(r);
+      imported++;
+    }
+    save();
+    render();
+    alert('Импортировано сделок: ' + imported);
+    e.target.value = '';
+  };
+  reader.readAsText(file, 'UTF-8');
+}
+
+// ── Admin ─────────────────────────────────────────────────────────────────
+var ADMIN_EMAIL = 'sxintcxt@gmail.com';
+
+function openAdmin(){
+  document.getElementById('adminOverlay').classList.add('open');
+  loadAdminUsers();
+}
+function closeAdmin(){
+  document.getElementById('adminOverlay').classList.remove('open');
+}
+document.getElementById('adminOverlay').addEventListener('click', function(e){
+  if(e.target === this) closeAdmin();
+});
+
+function loadAdminUsers(){
+  var list = document.getElementById('adminUserList');
+  list.innerHTML = '<div class="admin-loading">Загрузка...</div>';
+  fbDb.ref('users').once('value').then(function(snap){
+    var data = snap.val();
+    if(!data){ list.innerHTML = '<div class="admin-loading">Нет пользователей</div>'; return; }
+    list.innerHTML = '';
+    Object.entries(data).forEach(function(entry){
+      var uid = entry[0], udata = entry[1];
+      var info = udata.info || {};
+      var trades = udata.trades ? Object.values(udata.trades) : [];
+      // Считаем статистику
+      var revenue=0, costs=0, dirtySum=0, cleanSum=0;
+      trades.forEach(function(r){
+        var sp=parseFloat(r.spr)||0, bp=parseFloat(r.bpr)||0;
+        revenue+=sp; costs+=bp;
+        if(sp){
+          var d = sp*(1-r.tf/100)*(1-(r.wf||0)/100)-(r.wfFixed||0);
+          dirtySum+=d;
+          if(bp) cleanSum+=(d-bp);
+        }
+      });
+      var card = document.createElement('div');
+      card.className = 'user-card';
+      var lastSeen = info.lastSeen ? new Date(info.lastSeen).toLocaleString('ru-RU') : '—';
+      card.innerHTML =
+        '<div class="user-card-top">' +
+          '<img class="user-card-avatar" src="'+(info.photo||'')+'" onerror="this.style.display=\'none\'">' +
+          '<div>' +
+            '<div class="user-card-name">'+(info.name||'Без имени')+'</div>' +
+            '<div class="user-card-email">'+(info.email||uid)+'</div>' +
+          '</div>' +
+          '<div class="user-card-last">Последний вход:<br>'+lastSeen+'</div>' +
+        '</div>' +
+        '<div class="user-stats">' +
+          '<div class="user-stat"><div class="user-stat-lbl">Сделок</div><div class="user-stat-val" style="color:var(--blue)">'+trades.length+'</div></div>' +
+          '<div class="user-stat"><div class="user-stat-lbl">Расходы</div><div class="user-stat-val" style="color:var(--red)">$'+costs.toFixed(2)+'</div></div>' +
+          '<div class="user-stat"><div class="user-stat-lbl">Грязная</div><div class="user-stat-val" style="color:var(--yel)">$'+dirtySum.toFixed(2)+'</div></div>' +
+          '<div class="user-stat"><div class="user-stat-lbl">Чистая</div><div class="user-stat-val" style="color:'+(cleanSum>=0?'var(--green)':'var(--red)')+';">'+(cleanSum>=0?'+':'')+cleanSum.toFixed(2)+'$</div></div>' +
+        '</div>' +
+        (trades.length > 0 ?
+          '<div class="admin-trades" id="trades-'+uid+'" style="display:none">'+buildTradesTable(trades)+'</div>' +
+          '<div style="text-align:center;margin-top:8px"><button class="btn btns" style="font-size:11px;padding:4px 12px" onclick="toggleTrades(\''+uid+'\')">▼ Показать сделки</button></div>'
+        : '') ;
+      list.appendChild(card);
+    });
+  }).catch(function(e){
+    list.innerHTML = '<div class="admin-loading" style="color:var(--red)">Ошибка: '+e.message+'</div>';
+  });
+}
+
+function buildTradesTable(trades){
+  var rows = trades.map(function(r,i){
+    var d = parseFloat(r.spr) ? (parseFloat(r.spr)*(1-r.tf/100)*(1-(r.wf||0)/100)-(r.wfFixed||0)) : null;
+    var c = d !== null && parseFloat(r.bpr) ? d - parseFloat(r.bpr) : null;
+    return '<tr>' +
+      '<td>'+(i+1)+'</td>' +
+      '<td style="text-align:left">'+(r.skin||'—')+'</td>' +
+      '<td>'+(r.wear||'—')+'</td>' +
+      '<td>'+(r.fl||'—')+'</td>' +
+      '<td>'+(r.bp||'—')+'</td>' +
+      '<td style="color:var(--blue)">'+(r.bpr?'$'+parseFloat(r.bpr).toFixed(2):'—')+'</td>' +
+      '<td>'+(r.sp||'—')+'</td>' +
+      '<td style="color:var(--green)">'+(r.spr?'$'+parseFloat(r.spr).toFixed(2):'—')+'</td>' +
+      '<td style="color:var(--yel)">'+(d!==null?'$'+d.toFixed(2):'—')+'</td>' +
+      '<td style="color:'+(c!==null?(c>=0?'var(--green)':'var(--red)'):'var(--muted)')+';">'+(c!==null?(c>=0?'+':'')+c.toFixed(2)+'$':'—')+'</td>' +
+    '</tr>';
+  }).join('');
+  return '<table><thead><tr><th>#</th><th>Скин</th><th>Состояние</th><th>Флоат</th><th>Купл.</th><th>Цена</th><th>Прод.</th><th>Цена</th><th>Грязная</th><th>Чистая</th></tr></thead><tbody>'+rows+'</tbody></table>';
+}
+
+function toggleTrades(uid){
+  var el = document.getElementById('trades-'+uid);
+  var btn = el.nextElementSibling.querySelector('button');
+  if(el.style.display === 'none'){
+    el.style.display = 'block';
+    btn.textContent = '▲ Скрыть сделки';
+  } else {
+    el.style.display = 'none';
+    btn.textContent = '▼ Показать сделки';
+  }
+}
+
+// ── Вкладки ───────────────────────────────────────────────────────────────
+function switchTab(name){
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('on'); });
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('on'); });
+  document.getElementById('tab-'+name).classList.add('on');
+  document.getElementById('panel-'+name).classList.add('on');
+}
+
+// ── Выводы ────────────────────────────────────────────────────────────────
+// Комиссия за вывод: [%, fixed$]
+// Комиссии при выводе: только фиксированная часть $1.2 (1.5% уже учтена в каждой сделке)
+var WD_FEES = { 'CS.MONEY': [0, 1.2], 'CSFloat': [0, 0], 'Buff163': [0, 0] };
+
+function getAvailForPlat(plat){
+  // Грязная прибыль проданных скинов на платформе продажи
+  var earned = 0;
+  rows.forEach(function(r){
+    if(r.sold && r.sp === plat){ var d=dirty(r); if(d!==null) earned+=d; }
+  });
+  // Уже выведено с этой платформы
+  var alreadyWd = 0;
+  withdrawals.forEach(function(w){ if(w.plat===plat) alreadyWd+=w.amount; });
+  return Math.max(0, earned - alreadyWd);
+}
+
+function calcWdFee(plat, amount){
+  var f = WD_FEES[plat] || [0,0];
+  if(amount <= 0) return 0;
+  return amount * f[0]/100 + f[1];
+}
+
+function updWdCalc(){
+  var plat   = document.getElementById('wd-plat').value;
+  var amount = parseFloat(document.getElementById('wd-amount').value) || 0;
+  var avail  = getAvailForPlat(plat);
+
+  // Ограничить ввод доступным максимумом
+  var inp = document.getElementById('wd-amount');
+  inp.max = avail.toFixed(2);
+  if(amount > avail){ inp.value = avail.toFixed(2); amount = avail; }
+
+  var availEl = document.getElementById('wd-avail');
+  availEl.textContent = 'Доступно для вывода: $' + avail.toFixed(2);
+
+  if(amount > 0){
+    var fee = calcWdFee(plat, amount);
+    var net = amount - fee;
+    document.getElementById('wd-calc').style.display = '';
+    document.getElementById('wdc-amount').textContent = '$'+amount.toFixed(2);
+    document.getElementById('wdc-fee').textContent = '-$'+fee.toFixed(2);
+    document.getElementById('wdc-net').textContent = '$'+Math.max(0,net).toFixed(2);
+  } else {
+    document.getElementById('wd-calc').style.display = 'none';
+  }
+}
+
+function openWdModal(){
+  var today = new Date().toISOString().slice(0,10);
+  document.getElementById('wd-date').value = today;
+  document.getElementById('wd-amount').value = '';
+  document.getElementById('wd-note').value = '';
+  document.getElementById('wd-calc').style.display = 'none';
+  document.getElementById('wdModal').classList.add('open');
+  updWdCalc();
+}
+function closeWdModal(){ document.getElementById('wdModal').classList.remove('open'); }
+document.getElementById('wdModal').addEventListener('click', function(e){ if(e.target===this) closeWdModal(); });
+
+function confirmWd(){
+  var plat   = document.getElementById('wd-plat').value;
+  var amount = parseFloat(document.getElementById('wd-amount').value);
+  var date   = document.getElementById('wd-date').value;
+  var note   = document.getElementById('wd-note').value.trim();
+  if(!amount || amount <= 0){ showToast('Введите сумму вывода'); return; }
+  var fee = calcWdFee(plat, amount);
+  var net = amount - fee;
+  var w = { id: ++wid, plat: plat, amount: amount, fee: parseFloat(fee.toFixed(4)), net: parseFloat(net.toFixed(4)), date: date, note: note };
+  withdrawals.push(w);
+  saveWd();
+  renderWd();
+  updS();
+  closeWdModal();
+  showToast('✓ Вывод зафиксирован');
+}
+
+function delWd(id){
+  var w = withdrawals.find(function(w){ return w.id===id; });
+  if(!w) return;
+  if(!confirm('Удалить запись о выводе $'+w.amount.toFixed(2)+' ('+w.plat+')?')) return;
+  withdrawals = withdrawals.filter(function(w){ return w.id!==id; });
+  saveWd();
+  renderWd();
+  updS();
+}
+
+function saveWd(){
+  try{ localStorage.setItem('cs2wd_bak', JSON.stringify(withdrawals)); }catch(e){}
+  if(!wdRef) return;
+  var obj = {};
+  withdrawals.forEach(function(w){ obj['w'+w.id]=w; });
+  wdRef.set(obj).catch(function(e){ console.error('WD save error:',e); });
+}
+
+function loadWdLocal(){
+  try{
+    var s=localStorage.getItem('cs2wd_bak');
+    if(s){ withdrawals=JSON.parse(s); wid=withdrawals.reduce(function(m,w){ return Math.max(m,w.id); },0); }
+  }catch(e){}
+}
+
+function renderWd(){
+  var tb = document.getElementById('WD-TB');
+  var em = document.getElementById('WD-EM');
+  if(!withdrawals.length){ tb.innerHTML=''; em.style.display=''; return; }
+  em.style.display='none';
+  tb.innerHTML = withdrawals.slice().reverse().map(function(w,i){
+    return '<tr>'+
+      '<td style="color:var(--muted)">'+(withdrawals.length-i)+'</td>'+
+      '<td>'+w.date+'</td>'+
+      '<td style="color:var(--yel);font-weight:500">'+w.plat+'</td>'+
+      '<td style="color:var(--blue);font-family:monospace">$'+w.amount.toFixed(2)+'</td>'+
+      '<td style="color:var(--red);font-family:monospace">-$'+w.fee.toFixed(2)+'</td>'+
+      '<td style="color:var(--green);font-weight:600;font-family:monospace">$'+w.net.toFixed(2)+'</td>'+
+      '<td style="color:var(--muted);font-size:12px">'+(w.note||'—')+'</td>'+
+      '<td><button class="db" onclick="delWd('+w.id+')" title="Удалить">×</button></td>'+
+    '</tr>';
+  }).join('');
+}
+
+// Запуск
+render();
+
+// Динамически выставить top для sticky заголовков таблицы
+function fixStickyTop(){
+  var hdr = document.querySelector('.hdr');
+  var stats = document.querySelector('.stats');
+  var tabs = document.querySelector('.tabs');
+  var top = (hdr ? hdr.offsetHeight : 0) +
+            (stats ? stats.offsetHeight : 0) +
+            (tabs ? tabs.offsetHeight : 0);
+  document.querySelectorAll('th').forEach(function(el){
+    el.style.top = top + 'px';
+  });
+}
+window.addEventListener('load', fixStickyTop);
+window.addEventListener('resize', fixStickyTop);
+setTimeout(fixStickyTop, 300);
+</script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script>
+// ── Google Auth ───────────────────────────────────────────────────────────
+var fbAuth;
+
+function initFirebase(){
+  try {
+    fbApp  = firebase.initializeApp(firebaseConfig);
+    fbDb   = firebase.database();
+    fbAuth = firebase.auth();
+
+    fbAuth.onAuthStateChanged(function(user){
+      if(user){
+        document.getElementById('authOverlay').style.display = 'none';
+        document.getElementById('userInfo').style.display = 'flex';
+        document.getElementById('userAvatar').src = user.photoURL || '';
+        document.getElementById('userName').textContent = user.displayName || user.email;
+
+        // Показать кнопку Админ только для sxintcxt@gmail.com
+        if(user.email === ADMIN_EMAIL){
+          document.getElementById('adminBtn').style.display = 'inline-block';
+        }
+
+        // Сохранить/обновить инфо о пользователе
+        var userInfoRef = fbDb.ref('users/' + user.uid + '/info');
+        userInfoRef.once('value').then(function(snap){
+          var isNew = !snap.exists();
+          userInfoRef.set({
+            name: user.displayName || '',
+            email: user.email || '',
+            photo: user.photoURL || '',
+            firstSeen: isNew ? new Date().toISOString() : (snap.val().firstSeen || new Date().toISOString()),
+            lastSeen: new Date().toISOString(),
+            lastIp: userIp
+          });
+          // Лог входа
+          fbDb.ref('users/' + user.uid + '/log').push({
+            event: isNew ? 'РЕГИСТРАЦИЯ' : 'ВХОД',
+            email: user.email,
+            ip: userIp,
+            time: new Date().toISOString()
+          });
+        });
+
+        fbRef    = fbDb.ref('users/' + user.uid + '/trades');
+        fbLogRef = fbDb.ref('users/' + user.uid + '/log');
+        wdRef    = fbDb.ref('users/' + user.uid + '/withdrawals');
+
+        // Загрузить выводы
+        wdRef.once('value').then(function(snap){
+          var data = snap.val();
+          if(data){
+            withdrawals = Object.values(data).sort(function(a,b){ return a.id-b.id; });
+            wid = withdrawals.reduce(function(m,w){ return Math.max(m,w.id); },0);
+          }
+          renderWd(); updS();
+        });
+        var firstLoad = true;
+        fbRef.on('value', function(snap){
+          // Если есть несохранённые изменения — не трогаем таблицу вообще
+          // чтобы не сбивать фокус и курсор при редактировании
+          if(!firstLoad && pendingChanges.length > 0) return;
+
+          var data = snap.val();
+          if(data){
+            rows = Object.values(data).sort(function(a,b){ return a.id - b.id; });
+            rid  = rows.reduce(function(m,r){ return Math.max(m,r.id); }, 0);
+          } else {
+            rows = [];
+          }
+          rowsSnapshot = JSON.stringify(rows);
+          pendingChanges = [];
+          updSaveBtns();
+          fbReady = true;
+          setBadgeDB('ok');
+          firstLoad = false;
+          render();
+        }, function(err){
+          console.error(err);
+          setBadgeDB('err');
+          loadLocal(); loadWdLocal(); renderWd(); render();
+        });
+      } else {
+        document.getElementById('authOverlay').style.display = 'flex';
+        document.getElementById('userInfo').style.display = 'none';
+        fbReady = false; rows = []; render();
+      }
+    });
+
+    document.getElementById('signInBtn').addEventListener('click', function(){
+      var provider = new firebase.auth.GoogleAuthProvider();
+      fbAuth.signInWithPopup(provider).catch(function(e){ alert('Ошибка входа: ' + e.message); });
+    });
+
+    document.getElementById('signOutBtn').addEventListener('click', function(){
+      if(confirm('Выйти из аккаунта?')){
+        fbAuth.signOut();
+        if(fbRef) fbRef.off();
+        fbRef = null; fbReady = false; rows = []; render();
+      }
+    });
+
+  } catch(e) {
+    console.error('Firebase init error:', e);
+    setBadgeDB('err');
+    loadLocal(); loadWdLocal(); renderWd(); render();
+  }
+}
+
+initFirebase();
+</script>
+</body>
+</html>
