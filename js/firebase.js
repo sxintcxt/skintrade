@@ -43,6 +43,7 @@ function initFirebase(){
         fbRef    = fbDb.ref('users/' + user.uid + '/trades');
         fbLogRef = fbDb.ref('users/' + user.uid + '/log');
         wdRef    = fbDb.ref('users/' + user.uid + '/withdrawals');
+        depRef   = fbDb.ref('users/' + user.uid + '/deposits');
 
         // Загрузить выводы
         wdRef.once('value').then(function(snap){
@@ -52,6 +53,16 @@ function initFirebase(){
             wid = withdrawals.reduce(function(m,w){ return Math.max(m,w.id); },0);
           }
           renderWd(); updS();
+        });
+
+        // Загрузить депозиты
+        depRef.once('value').then(function(snap){
+          var data = snap.val();
+          if(data){
+            deposits = Object.values(data).sort(function(a,b){ return a.id-b.id; });
+            did = deposits.reduce(function(m,d){ return Math.max(m,d.id); },0);
+          }
+          renderDep(); updS();
         });
         var firstLoad = true;
         fbRef.on('value', function(snap){
@@ -77,7 +88,7 @@ function initFirebase(){
         }, function(err){
           console.error(err);
           setBadgeDB('err');
-          loadLocal(); loadWdLocal(); renderWd(); render();
+          loadLocal(); loadWdLocal(); loadDepLocal(); renderWd(); renderDep(); render();
         });
       } else {
         document.getElementById('authOverlay').style.display = 'flex';
@@ -102,7 +113,7 @@ function initFirebase(){
   } catch(e) {
     console.error('Firebase init error:', e);
     setBadgeDB('err');
-    loadLocal(); loadWdLocal(); renderWd(); render();
+    loadLocal(); loadWdLocal(); loadDepLocal(); renderWd(); renderDep(); render();
   }
 }
 

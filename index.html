@@ -47,11 +47,12 @@
   </div>
 </div>
 
-<div class="stats" style="grid-template-columns:repeat(6,1fr)">
+<div class="stats" style="grid-template-columns:repeat(7,1fr)">
   <div class="stat"><div class="slbl">Вложено</div><div class="sval" id="s-bought">$0.00</div></div>
   <div class="stat"><div class="slbl">Продано</div><div class="sval" id="s-sold">$0.00</div></div>
   <div class="stat"><div class="slbl">Прибыль</div><div class="sval" id="s-profit">$0.00</div></div>
   <div class="stat"><div class="slbl">Ожидается</div><div class="sval" id="s-pending">$0.00</div></div>
+  <div class="stat"><div class="slbl">Внесено</div><div class="sval" id="s-deposited">$0.00</div></div>
   <div class="stat"><div class="slbl">Выведено</div><div class="sval" id="s-withdrawn">$0.00</div></div>
   <div class="stat"><div class="slbl">Общ. капитал</div><div class="sval" id="s-total">$0.00</div></div>
 </div>
@@ -59,6 +60,7 @@
 <div class="tabs">
   <button class="tab on" id="tab-trades" onclick="switchTab('trades')">📋 Сделки</button>
   <button class="tab" id="tab-wd" onclick="switchTab('wd')">💸 Выводы</button>
+  <button class="tab" id="tab-dep" onclick="switchTab('dep')">💳 Депозиты</button>
 </div>
 
 <!-- TAB: Сделки -->
@@ -79,7 +81,7 @@
       <tr>
         <th rowspan="2" style="width:32px">#</th>
         <th colspan="5" class="g2">&#8212; Скин &#8212;</th>
-        <th colspan="3" class="g2" style="color:var(--blue)">&#8212; Покупка &#8212;</th>
+        <th colspan="2" class="g2" style="color:var(--blue)">&#8212; Покупка &#8212;</th>
         <th colspan="3" class="g2" style="color:var(--green)">&#8212; Продажа &#8212;</th>
         <th colspan="2" class="g2 col-trade" style="color:var(--yel)">&#8212; Комиссии &#8212;</th>
         <th colspan="2" class="g2" style="color:var(--yel)">&#8212; Прибыль &#8212;</th>
@@ -93,7 +95,6 @@
         <th class="col-pattern" style="min-width:52px">Паттерн</th>
         <th class="col-bplat" style="min-width:94px;color:var(--blue)">Платформа</th>
         <th style="min-width:80px;color:var(--blue)">Цена $</th>
-        <th style="min-width:52px;color:var(--blue)" title="Куплено с баланса платформы">Баланс</th>
         <th class="col-splat" style="min-width:94px;color:var(--green)">Платформа</th>
         <th style="min-width:80px;color:var(--green)">Цена $</th>
         <th style="min-width:52px;color:var(--green)">Продано</th>
@@ -114,25 +115,45 @@
 <div class="tab-panel" id="panel-wd">
 <div class="tb">
   <button class="btn btna" onclick="openWdModal()">+ Зафиксировать вывод</button>
+  <button class="btn btn-save" id="wdSaveBtn" style="display:none" onclick="saveWdNow()">💾 Сохранить</button>
+  <button class="btn btn-reset" id="wdResetBtn" style="display:none" onclick="resetWdChanges()">↩ Сбросить</button>
 </div>
 <div class="tw">
   <div class="tw-scroll">
   <table class="wt">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Дата</th>
-        <th>Платформа</th>
-        <th>Выведено $</th>
-        <th>Комиссия $</th>
-        <th>Получено $</th>
-        <th>Комментарий</th>
-        <th></th>
+        <th>#</th><th>Дата</th><th>Платформа</th>
+        <th>Выведено $</th><th>Комиссия $</th><th>Получено $</th>
+        <th>Комментарий</th><th></th>
       </tr>
     </thead>
     <tbody id="WD-TB"></tbody>
   </table>
   <div id="WD-EM" class="empty"><b>Нет выводов</b>Нажмите «+ Зафиксировать вывод»</div>
+  </div>
+</div>
+</div>
+
+<!-- TAB: Депозиты -->
+<div class="tab-panel" id="panel-dep">
+<div class="tb">
+  <button class="btn btna" onclick="openDepModal()">+ Внести депозит</button>
+  <button class="btn btn-save" id="wdSaveBtn2" style="display:none" onclick="saveWdNow()">💾 Сохранить</button>
+  <button class="btn btn-reset" id="wdResetBtn2" style="display:none" onclick="resetWdChanges()">↩ Сбросить</button>
+</div>
+<div class="tw">
+  <div class="tw-scroll">
+  <table class="wt">
+    <thead>
+      <tr>
+        <th>#</th><th>Дата</th><th>Платформа</th>
+        <th>Сумма $</th><th>Комментарий</th><th></th>
+      </tr>
+    </thead>
+    <tbody id="DEP-TB"></tbody>
+  </table>
+  <div id="DEP-EM" class="empty"><b>Нет депозитов</b>Нажмите «+ Внести депозит»</div>
   </div>
 </div>
 </div>
@@ -172,9 +193,36 @@
   </div>
 </div>
 
-<div class="toast" id="toast"></div>
+<!-- Modal: Депозит -->
+<div class="modal-bg" id="depModal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeDepModal()">×</button>
+    <h3>💳 Внести депозит</h3>
+    <div class="mrow">
+      <div class="mlbl">Платформа</div>
+      <select class="minp" id="dep-plat">
+        <option>CS.MONEY</option>
+        <option>CSFloat</option>
+        <option>Buff163</option>
+      </select>
+    </div>
+    <div class="mrow">
+      <div class="mlbl">Сумма $</div>
+      <input type="number" class="minp" id="dep-amount" step="0.01" min="0" placeholder="0.00">
+    </div>
+    <div class="mrow">
+      <div class="mlbl">Дата</div>
+      <input type="date" class="minp" id="dep-date">
+    </div>
+    <div class="mrow">
+      <div class="mlbl">Комментарий</div>
+      <input type="text" class="minp" id="dep-note" placeholder="Необязательно...">
+    </div>
+    <button class="btn btna" style="width:100%;padding:10px" onclick="confirmDep()">Подтвердить депозит</button>
+  </div>
+</div>
 
-<!-- Firebase SDK -->
+<div class="toast" id="toast"></div>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>

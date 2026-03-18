@@ -1,18 +1,25 @@
-var SKINS = []; // загружается через API
+// ── Константы ─────────────────────────────────────────────────────────────
+var SKINS    = []; // загружается через API
 var PLAT_BUY  = ['Buff163','CS.MONEY','CSFloat','Бесплатно'];
 var PLAT_SELL = ['CS.MONEY','CSFloat','Buff163'];
-var WEAR = ['Factory New','Minimal Wear','Field-Tested','Well-Worn','Battle-Scarred'];
-var TYPE = ['Normal','StatTrak','Souvenir'];
+var PLAT_WD   = ['CS.MONEY','CSFloat','Buff163']; // платформы для выводов/депозитов
+var WEAR      = ['Factory New','Minimal Wear','Field-Tested','Well-Worn','Battle-Scarred'];
+var TYPE      = ['Normal','StatTrak','Souvenir'];
 
 // Комиссии платформ для сделок: [trade%, withdraw%]
-// $1.2 фиксированная часть CS.MONEY считается только при выводе средств
 var PLAT_FEES = {
   'Buff163':  [2.5, 0,   0],
   'CS.MONEY': [5,   1.5, 0],
   'CSFloat':  [2,   0,   0]
 };
 
-// Флоат диапазоны для каждого состояния [min, max)
+// Комиссии при выводе: только $1.2 (1.5% уже в сделках)
+var WD_FEES = {
+  'CS.MONEY': [0, 1.2],
+  'CSFloat':  [0, 0],
+  'Buff163':  [0, 0]
+};
+
 var WEAR_RANGES = {
   'Factory New':    [0,    0.07],
   'Minimal Wear':   [0.07, 0.15],
@@ -21,19 +28,17 @@ var WEAR_RANGES = {
   'Battle-Scarred': [0.45, 1.0]
 };
 
-function getPlatFees(plat){ return PLAT_FEES[plat] || [5, 0, 0]; }
+function getPlatFees(p){ return PLAT_FEES[p] || [0,0,0]; }
 
-// Определить состояние по флоату
 function wearFromFloat(f){
-  var v = parseFloat(f);
-  if(isNaN(v)) return null;
-  var ranges = WEAR_RANGES;
-  for(var w in ranges){
-    if(v >= ranges[w][0] && v < ranges[w][1]) return w;
+  f = parseFloat(f);
+  if(isNaN(f)) return null;
+  for(var w in WEAR_RANGES){
+    var r = WEAR_RANGES[w];
+    if(f >= r[0] && f < r[1]) return w;
   }
-  if(v >= 0.45) return 'Battle-Scarred';
+  if(f >= 0.45) return 'Battle-Scarred';
   return null;
 }
 
-// Получить допустимый диапазон флоата для состояния
-function floatRangeForWear(wear){ return WEAR_RANGES[wear] || [0, 1]; }
+function floatRangeForWear(wear){ return WEAR_RANGES[wear] || [0,1]; }
