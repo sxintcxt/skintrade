@@ -112,7 +112,7 @@ function loadLocal(){
 function mkRow(){
   var fees = getPlatFees('CS.MONEY');
   return { id: ++rid, skin:'', type:'Normal', wear:'Field-Tested', fl:'0.15', pat:'',
-           bp:'Buff163', bpr:'',
+           bp:'Buff163', bpr:'', fromBalance:false,
            sp:'CS.MONEY', spr:'', sold:false,
            tf:fees[0], wf:fees[1], wfFixed:fees[2] };
 }
@@ -144,7 +144,7 @@ function delRow(id){
 function upd(id, f, v){
   var r = rows.find(function(r){ return r.id===id; });
   if(!r) return;
-  var fieldNames = {skin:'Скин',type:'Тип',wear:'Состояние',fl:'Флоат',pat:'Паттерн',bp:'Платф.покупки',bpr:'Цена покупки',sp:'Платф.продажи',spr:'Цена продажи',sold:'Продано',free:'Бесплатно',tf:'Комис.сделки',wf:'Комис.вывода'};
+  var fieldNames = {skin:'Скин',type:'Тип',wear:'Состояние',fl:'Флоат',pat:'Паттерн',bp:'Платф.покупки',bpr:'Цена покупки',sp:'Платф.продажи',spr:'Цена продажи',sold:'Продано',free:'Бесплатно',fromBalance:'С баланса',tf:'Комис.сделки',wf:'Комис.вывода'};
   if(fieldNames[f] && String(r[f]) !== String(v)){
     var oldVal = r[f];
     r[f] = v;
@@ -163,9 +163,10 @@ function upd(id, f, v){
     if(ewf) ewf.textContent = fees[1] > 0 ? fees[1]+'%' : '—';
   }
 
-  // Бесплатно — блокировать/разблокировать цену покупки
+  // Бесплатно — блокировать/разблокировать цену покупки и чекбокс баланса
   if(f === 'bp'){
     var bprEl = document.getElementById('bpr'+id);
+    var balEl = bprEl ? bprEl.parentElement.nextElementSibling && bprEl.parentElement.nextElementSibling.querySelector('input[type=checkbox]') : null;
     if(bprEl){
       if(v === 'Бесплатно'){
         bprEl.disabled = true;
@@ -174,11 +175,14 @@ function upd(id, f, v){
         bprEl.style.color = 'var(--muted)';
         bprEl.style.opacity = '0.5';
         r.bpr = '';
+        r.fromBalance = false;
+        if(balEl){ balEl.checked = false; balEl.disabled = true; }
       } else {
         bprEl.disabled = false;
         bprEl.placeholder = '0.00';
         bprEl.style.color = '';
         bprEl.style.opacity = '';
+        if(balEl){ balEl.disabled = false; }
       }
     }
   }
@@ -424,6 +428,19 @@ function render(){
     ibp.id = 'bpr'+r.id;
     if(isFree){ ibp.style.color='var(--muted)'; ibp.style.opacity='0.5'; }
     tbp.appendChild(ibp);
+
+    // Чекбокс "С баланса платформы"
+    var tbal = td('chk-cell');
+    var chkBal = document.createElement('input');
+    chkBal.type = 'checkbox'; chkBal.className = 'chk chk-free';
+    chkBal.checked = !!r.fromBalance;
+    chkBal.disabled = isFree;
+    chkBal.title = 'Куплено с баланса платформы (не с карты)';
+    chkBal.onchange = (function(row){ return function(){
+      upd(row.id, 'fromBalance', this.checked);
+      updS();
+    };})(r);
+    tbal.appendChild(chkBal);
 
     var spSel = mkSel(PLAT_SELL, r.sp, r.id, 'sp', 'gi');
     spSel.id = 'spl'+r.id;

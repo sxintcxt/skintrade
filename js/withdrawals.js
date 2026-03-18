@@ -4,15 +4,20 @@
 var WD_FEES = { 'CS.MONEY': [0, 1.2], 'CSFloat': [0, 0], 'Buff163': [0, 0] };
 
 function getAvailForPlat(plat){
-  // Грязная прибыль проданных скинов на платформе продажи
+  // Грязная прибыль проданных скинов на этой платформе продажи
   var earned = 0;
   rows.forEach(function(r){
     if(r.sold && r.sp === plat){ var d=dirty(r); if(d!==null) earned+=d; }
   });
-  // Уже выведено с этой платформы
+  // Вычитаем покупки с баланса этой платформы
+  var spent = 0;
+  rows.forEach(function(r){
+    if(r.fromBalance && r.bp === plat) spent += parseFloat(r.bpr)||0;
+  });
+  // Вычитаем уже выведенное с этой платформы
   var alreadyWd = 0;
   withdrawals.forEach(function(w){ if(w.plat===plat) alreadyWd+=w.amount; });
-  return Math.max(0, earned - alreadyWd);
+  return Math.max(0, earned - spent - alreadyWd);
 }
 
 function calcWdFee(plat, amount){
