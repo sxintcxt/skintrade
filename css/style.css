@@ -18,10 +18,11 @@ html,body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkM
 .fi{margin-left:auto}
 .fi input{background:var(--surf);border:1px solid var(--brd);color:var(--txt);border-radius:6px;padding:6px 11px;font-size:13px;width:180px;outline:none}
 .fi input:focus{border-color:var(--blue)}
-.tw{padding:0 20px 30px}
-.tw-scroll{overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch}
+.tw{padding:0 20px 30px;overflow-x:auto;overflow-y:visible;-webkit-overflow-scrolling:touch}
+.tw-scroll{display:contents}
 table{width:100%;border-collapse:collapse;min-width:900px}
-th{background:var(--surf);border:1px solid var(--brd);padding:7px 7px;text-align:center;font-weight:500;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;position:sticky;top:187px;z-index:100}
+thead{position:sticky;top:187px;z-index:100}
+th{background:var(--surf);border:1px solid var(--brd);padding:7px 7px;text-align:center;font-weight:500;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;white-space:nowrap}
 th.g2{background:var(--surf2);text-align:center}
 tbody td{border:1px solid var(--brd);padding:3px 5px;background:var(--bg);vertical-align:middle;text-align:center;overflow:visible}
 tbody tr:hover td{background:#1a2233}
@@ -135,8 +136,7 @@ td.chk-cell{text-align:center;padding:2px}
   .btn{padding:8px 11px;font-size:12px}
   .fi{margin-left:0;width:100%}
   .fi input{width:100%;font-size:13px}
-  .tw{padding:0 0 24px}
-  .tw-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tw{padding:0 0 24px;overflow-x:auto;-webkit-overflow-scrolling:touch}
   table{font-size:11px;min-width:900px}
   th{padding:5px 4px;font-size:9px;white-space:nowrap}
   th.g2{font-size:9px}
