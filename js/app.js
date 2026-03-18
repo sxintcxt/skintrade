@@ -1,6 +1,5 @@
 var rows = [], rid = 0, fq = '', acel = null;
-var withdrawals = [], wid = 0;
-var wdRef = null;
+var sortField = '', sortDir = 1;
 
 // Try fetch full list in background
 fetch('https://raw.githubusercontent.com/ByMykel/CSGO-API/main/public/api/en/skins.json')
@@ -350,11 +349,56 @@ function mkInp(type, val, cls, onch, style){
   return i;
 }
 
+function getSortedRows(vis){
+  if(!sortField) return vis;
+  return vis.slice().sort(function(a,b){
+    var av = getSortVal(a, sortField);
+    var bv = getSortVal(b, sortField);
+    if(typeof av==='string'){ av=av.toLowerCase(); bv=bv.toLowerCase(); }
+    if(av < bv) return -sortDir;
+    if(av > bv) return  sortDir;
+    return 0;
+  });
+}
+
+function sortRows(field){
+  if(sortField === field){
+    sortDir *= -1;
+  } else {
+    sortField = field;
+    sortDir = 1;
+  }
+  render();
+  updateSortArrows();
+}
+
+function updateSortArrows(){
+  document.querySelectorAll('th[data-sort]').forEach(function(th){
+    var f = th.getAttribute('data-sort');
+    th.querySelector('.sort-arr') && (th.querySelector('.sort-arr').textContent =
+      f === sortField ? (sortDir === 1 ? ' ▲' : ' ▼') : ' ⇅');
+  });
+}
+
+function getSortVal(r, field){
+  switch(field){
+    case 'bp':  return r.bp || '';
+    case 'sp':  return r.sp || '';
+    case 'sold':return r.sold ? 1 : 0;
+    case 'bpr': return parseFloat(r.bpr) || 0;
+    case 'spr': return parseFloat(r.spr) || 0;
+    case 'clean': var c=clean(r); return c !== null ? c : -999999;
+    default:    return 0;
+  }
+}
+
 function render(){
   var tb = document.getElementById('TB'), em = document.getElementById('EM');
-  var vis = fq ? rows.filter(function(r){ return r.skin.toLowerCase().indexOf(fq)!==-1; }) : rows;
+  var vis = fq ? rows.filter(function(r){ return r.skin.toLowerCase().indexOf(fq)!==-1; }) : rows.slice();
+  vis = getSortedRows(vis);
   document.getElementById('rc').textContent = rows.length + ' сделок';
-  if(!rows.length){ tb.innerHTML=''; em.style.display='';  return; }
+  updateSortArrows();
+  if(!rows.length){ tb.innerHTML=''; em.style.display=''; return; }
   em.style.display = 'none';
   tb.innerHTML = '';
 

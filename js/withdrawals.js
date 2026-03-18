@@ -197,14 +197,58 @@ function loadDepLocal(){
   }catch(e){}
 }
 
+// ── Сортировка выводов и депозитов ───────────────────────────────────────
+function sortWd(field){
+  if(wdSortField === field) wdSortDir *= -1;
+  else { wdSortField = field; wdSortDir = 1; }
+  renderWd();
+  document.querySelectorAll('th[data-sort-wd]').forEach(function(th){
+    var f = th.getAttribute('data-sort-wd');
+    var arr = th.querySelector('.sort-arr');
+    if(arr) arr.textContent = f===wdSortField ? (wdSortDir===1?' ▲':' ▼') : ' ⇅';
+  });
+}
+
+function sortDep(field){
+  if(depSortField === field) depSortDir *= -1;
+  else { depSortField = field; depSortDir = 1; }
+  renderDep();
+  document.querySelectorAll('th[data-sort-dep]').forEach(function(th){
+    var f = th.getAttribute('data-sort-dep');
+    var arr = th.querySelector('.sort-arr');
+    if(arr) arr.textContent = f===depSortField ? (depSortDir===1?' ▲':' ▼') : ' ⇅';
+  });
+}
+
+function applySortWd(arr){
+  if(!wdSortField) return arr.slice().reverse(); // default: newest first
+  return arr.slice().sort(function(a,b){
+    var av = a[wdSortField] || 0, bv = b[wdSortField] || 0;
+    if(av < bv) return -1 * wdSortDir;
+    if(av > bv) return  1 * wdSortDir;
+    return 0;
+  });
+}
+
+function applySortDep(arr){
+  if(!depSortField) return arr.slice().reverse(); // default: newest first
+  return arr.slice().sort(function(a,b){
+    var av = a[depSortField] || 0, bv = b[depSortField] || 0;
+    if(av < bv) return -1 * depSortDir;
+    if(av > bv) return  1 * depSortDir;
+    return 0;
+  });
+}
+
 // ── Рендер таблицы выводов ────────────────────────────────────────────────
 function renderWd(){
   var tb=document.getElementById('WD-TB'), em=document.getElementById('WD-EM');
   if(!withdrawals.length){ tb.innerHTML=''; em.style.display=''; return; }
   em.style.display='none';
-  tb.innerHTML = withdrawals.slice().reverse().map(function(w,i){
+  var sorted = applySortWd(withdrawals);
+  tb.innerHTML = sorted.map(function(w, i){
     return '<tr>'+
-      '<td style="color:var(--muted)">'+(withdrawals.length-i)+'</td>'+
+      '<td style="color:var(--muted)">'+(i+1)+'</td>'+
       '<td>'+w.date+'</td>'+
       '<td style="color:var(--yel);font-weight:500">'+w.plat+'</td>'+
       '<td style="color:var(--blue);font-family:monospace">$'+w.amount.toFixed(2)+'</td>'+
@@ -222,9 +266,10 @@ function renderDep(){
   if(!tb) return;
   if(!deposits.length){ tb.innerHTML=''; em.style.display=''; return; }
   em.style.display='none';
-  tb.innerHTML = deposits.slice().reverse().map(function(d,i){
+  var sorted = applySortDep(deposits);
+  tb.innerHTML = sorted.map(function(d, i){
     return '<tr>'+
-      '<td style="color:var(--muted)">'+(deposits.length-i)+'</td>'+
+      '<td style="color:var(--muted)">'+(i+1)+'</td>'+
       '<td>'+d.date+'</td>'+
       '<td style="color:var(--yel);font-weight:500">'+d.plat+'</td>'+
       '<td style="color:var(--blue);font-weight:600;font-family:monospace">$'+d.amount.toFixed(2)+'</td>'+
