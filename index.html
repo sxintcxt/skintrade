@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>SaintCAT Trades</title>
+<link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,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AA4AAAAAAAAAAAAAAAAAAAAAAAAAcQAAAOQAAADxAAAA/wAAAP8AAAB+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA5AAAA4AAAAP8AAAD/AAAA/wAAAP0AAADNAAAAGQAAABkAAADNAAAA/QAAAP8AAAD/AAAA/wAAAOAAAAA5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABxAAAA5QAAAOEAAADgAAAA2gAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABOAAAA4AAAAP8AAAD/AAAA/wAAAPAAAACNAAAAjQAAAPAAAAD/AAAA/wAAAP8AAADhAAAATgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAfAAAAHwAAAB8AAAAaAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA4AAAAtQAAAPYAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD2AAAAtQAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAXAAAALMAAADnAAAA+wAAAPsAAADnAAAAswAAAF0AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA///AD///gAf//wAD//4AAY/8AAAHPABAAhgAAIAIAADgAAAA8AAAAPjAAAD/4AAA//AAQP+AAAD+AAAB/AAAA/gAAAfwAAAP4AAAP+BCAP/AAAB/wAAAP8ACAB/AQAIBwAADAcAAA4HgQgeB4AAHgfAAD4H4AB+B/AA///4Af/8=">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Auth overlay -->
+<div class="auth-overlay" id="authOverlay">
+  <h1>🐱 SaintCAT Trades</h1>
+  <p>Войдите через Google чтобы получить доступ к вашим сделкам с любого устройства</p>
+  <button class="btn-google" id="signInBtn">
+    <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.7 2.5 30.2 0 24 0 14.8 0 6.9 5.4 3 13.3l7.8 6C12.7 13 17.9 9.5 24 9.5z"/><path fill="#4285F4" d="M46.6 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8C43.7 37.3 46.6 31.4 46.6 24.5z"/><path fill="#FBBC05" d="M10.8 28.7A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.2.8-4.7L2.5 13.3A23.9 23.9 0 0 0 0 24c0 3.8.9 7.4 2.5 10.6l8.3-5.9z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.6 2.2-7.7 2.2-6.1 0-11.3-4.1-13.2-9.7l-8.3 5.9C6.9 42.6 14.8 48 24 48z"/></svg>
+    Войти через Google
+  </button>
+</div>
+
+<div class="hdr">
+  <span class="logo">🐱 SaintCAT Trades</span>
+  <span class="badge ok" id="apibadge">451 скинов загружено</span>
+  <span class="badge" id="dbbadge">● Подключение...</span>
+  <div class="user-info" id="userInfo" style="display:none">
+    <img class="user-avatar" id="userAvatar" src="" alt="">
+    <span style="font-size:12px;color:var(--muted)" id="userName"></span>
+    <button class="btn btn-admin" id="adminBtn" style="display:none" onclick="openAdmin()">⚙ Админ</button>
+    <button class="btn-signout" id="signOutBtn">Выйти</button>
+  </div>
+  <span id="rc" style="font-size:11px;color:var(--muted)"></span>
+</div>
+
+<!-- Admin panel -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-panel">
+    <button class="admin-close" onclick="closeAdmin()">×</button>
+    <h2>⚙ АДМИН ПАНЕЛЬ</h2>
+    <div class="sub">Статистика всех пользователей</div>
+    <div class="user-list" id="adminUserList">
+      <div class="admin-loading">Загрузка пользователей...</div>
+    </div>
+  </div>
+</div>
+
+<div class="stats" style="grid-template-columns:repeat(6,1fr)">
+  <div class="stat"><div class="slbl">Вложено</div><div class="sval" id="s-bought">$0.00</div></div>
+  <div class="stat"><div class="slbl">Продано</div><div class="sval" id="s-sold">$0.00</div></div>
+  <div class="stat"><div class="slbl">Прибыль</div><div class="sval" id="s-profit">$0.00</div></div>
+  <div class="stat"><div class="slbl">Ожидается</div><div class="sval" id="s-pending">$0.00</div></div>
+  <div class="stat"><div class="slbl">Выведено</div><div class="sval" id="s-withdrawn">$0.00</div></div>
+  <div class="stat"><div class="slbl">Общ. капитал</div><div class="sval" id="s-total">$0.00</div></div>
+</div>
+
+<div class="tabs">
+  <button class="tab on" id="tab-trades" onclick="switchTab('trades')">📋 Сделки</button>
+  <button class="tab" id="tab-wd" onclick="switchTab('wd')">💸 Выводы</button>
+</div>
+
+<!-- TAB: Сделки -->
+<div class="tab-panel on" id="panel-trades">
+<div class="tb">
+  <button class="btn btna" id="addBtn">+ Добавить сделку</button>
+  <button class="btn btns" id="csvBtn">↓ CSV</button>
+  <button class="btn btns" id="importBtn">↑ Импорт CSV</button>
+  <button class="btn btn-save" id="saveBtn" style="display:none" onclick="saveNow()">💾 Сохранить</button>
+  <button class="btn btn-reset" id="resetBtn" style="display:none" onclick="resetChanges()">↩ Сбросить</button>
+  <input type="file" id="importFile" accept=".csv" style="display:none">
+  <div class="fi"><input type="text" id="flt" placeholder="Поиск по таблице..."></div>
+</div>
+<div class="tw">
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2" style="width:32px">#</th>
+        <th colspan="5" class="g2">&#8212; Скин &#8212;</th>
+        <th colspan="2" class="g2" style="color:var(--blue)">&#8212; Покупка &#8212;</th>
+        <th colspan="3" class="g2" style="color:var(--green)">&#8212; Продажа &#8212;</th>
+        <th colspan="2" class="g2 col-trade" style="color:var(--yel)">&#8212; Комиссии &#8212;</th>
+        <th colspan="2" class="g2" style="color:var(--yel)">&#8212; Прибыль &#8212;</th>
+        <th rowspan="2" style="width:28px"></th>
+      </tr>
+      <tr>
+        <th style="min-width:190px">Название</th>
+        <th class="col-type" style="min-width:85px">Тип</th>
+        <th style="min-width:105px">Состояние</th>
+        <th class="col-float" style="min-width:74px">Флоат</th>
+        <th class="col-pattern" style="min-width:52px">Паттерн</th>
+        <th class="col-bplat" style="min-width:94px;color:var(--blue)">Платформа</th>
+        <th style="min-width:80px;color:var(--blue)">Цена $</th>
+        <th class="col-splat" style="min-width:94px;color:var(--green)">Платформа</th>
+        <th style="min-width:80px;color:var(--green)">Цена $</th>
+        <th style="min-width:52px;color:var(--green)">Продано</th>
+        <th class="col-trade" style="min-width:60px;color:var(--yel)">Сделка</th>
+        <th class="col-trade" style="min-width:60px;color:var(--yel)">Вывод %</th>
+        <th style="min-width:86px;color:var(--yel)">Грязная $</th>
+        <th style="min-width:86px;color:var(--yel)">Чистая $</th>
+      </tr>
+    </thead>
+    <tbody id="TB"></tbody>
+  </table>
+  <div id="EM" class="empty"><b>Нет сделок</b>Нажмите «+ Добавить сделку»</div>
+</div>
+</div>
+
+<!-- TAB: Выводы -->
+<div class="tab-panel" id="panel-wd">
+<div class="tb">
+  <button class="btn btna" onclick="openWdModal()">+ Зафиксировать вывод</button>
+</div>
+<div class="tw">
+  <table class="wt">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Дата</th>
+        <th>Платформа</th>
+        <th>Выведено $</th>
+        <th>Комиссия $</th>
+        <th>Получено $</th>
+        <th>Комментарий</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="WD-TB"></tbody>
+  </table>
+  <div id="WD-EM" class="empty"><b>Нет выводов</b>Нажмите «+ Зафиксировать вывод»</div>
+</div>
+</div>
+
+<!-- Modal: Вывод средств -->
+<div class="modal-bg" id="wdModal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeWdModal()">×</button>
+    <h3>💸 Зафиксировать вывод</h3>
+    <div class="mrow">
+      <div class="mlbl">Платформа</div>
+      <select class="minp" id="wd-plat" onchange="updWdCalc()">
+        <option>CS.MONEY</option>
+        <option>CSFloat</option>
+        <option>Buff163</option>
+      </select>
+    </div>
+    <div class="mrow">
+      <div class="mlbl">Сумма вывода $</div>
+      <input type="number" class="minp" id="wd-amount" step="0.01" min="0" placeholder="0.00" oninput="updWdCalc()">
+      <div class="mavail" id="wd-avail"></div>
+    </div>
+    <div class="mrow">
+      <div class="mlbl">Дата</div>
+      <input type="date" class="minp" id="wd-date">
+    </div>
+    <div class="mrow">
+      <div class="mlbl">Комментарий</div>
+      <input type="text" class="minp" id="wd-note" placeholder="Необязательно...">
+    </div>
+    <div class="mcalc" id="wd-calc" style="display:none">
+      <div class="mcalc-row"><span>Сумма вывода</span><span id="wdc-amount">$0.00</span></div>
+      <div class="mcalc-row"><span>Комиссия платформы</span><span id="wdc-fee">$0.00</span></div>
+      <div class="mcalc-row total"><span>Придёт на руки</span><span id="wdc-net">$0.00</span></div>
+    </div>
+    <button class="btn btna" style="width:100%;padding:10px" onclick="confirmWd()">Подтвердить вывод</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<!-- App scripts -->
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/withdrawals.js"></script>
+<script src="js/init.js"></script>
+<script src="js/firebase.js"></script>
+
+</body>
+</html>
