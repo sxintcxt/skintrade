@@ -832,7 +832,7 @@ function render(){
     tb.appendChild(tr);
   });
   updS();
-  setTimeout(fixStickyTop, 50);
+  fixStickyTop();
 }
 
 function exportCSV(){
@@ -990,6 +990,7 @@ function switchTab(name){
   document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('on'); });
   document.getElementById('tab-'+name).classList.add('on');
   document.getElementById('panel-'+name).classList.add('on');
+  setTimeout(fixStickyTop, 50);
 }
 
 // ── Выводы ────────────────────────────────────────────────────────────────
@@ -1118,17 +1119,13 @@ render();
 
 // Динамически выставить top для sticky заголовков таблицы
 function fixStickyTop(){
-  var hdr = document.querySelector('.hdr');
-  var stats = document.querySelector('.stats');
-  var tabs = document.querySelector('.tabs');
-  var top = (hdr ? hdr.offsetHeight : 0) +
-            (stats ? stats.offsetHeight : 0) +
-            (tabs ? tabs.offsetHeight : 0);
-  document.querySelectorAll('th').forEach(function(el){
+  var top = (document.querySelector('.hdr').offsetHeight || 0) +
+            (document.querySelector('.stats').offsetHeight || 0) +
+            (document.querySelector('.tabs').offsetHeight || 0);
+  document.querySelectorAll('thead th').forEach(function(el){
     el.style.top = top + 'px';
   });
 }
-window.addEventListener('load', function(){ setTimeout(fixStickyTop, 200); });
 window.addEventListener('resize', fixStickyTop);
 </script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -1210,6 +1207,7 @@ function initFirebase(){
           setBadgeDB('ok');
           firstLoad = false;
           render();
+          setTimeout(fixStickyTop, 100);
         }, function(err){
           console.error(err);
           setBadgeDB('err');
