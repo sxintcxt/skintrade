@@ -93,15 +93,15 @@
         <th style="min-width:105px">Состояние</th>
         <th class="col-float" style="min-width:74px">Флоат</th>
         <th class="col-pattern" style="min-width:52px">Паттерн</th>
-        <th class="col-bplat" style="min-width:94px;color:var(--blue)">Платформа</th>
-        <th style="min-width:80px;color:var(--blue)">Цена $</th>
-        <th class="col-splat" style="min-width:94px;color:var(--green)">Платформа</th>
-        <th style="min-width:80px;color:var(--green)">Цена $</th>
-        <th style="min-width:52px;color:var(--green)">Продано</th>
+        <th class="col-bplat" data-sort="bp" onclick="sortRows('bp')" style="min-width:94px;color:var(--blue);cursor:pointer">Платформа<span class="sort-arr"> ⇅</span></th>
+        <th data-sort="bpr" onclick="sortRows('bpr')" style="min-width:80px;color:var(--blue);cursor:pointer">Цена $<span class="sort-arr"> ⇅</span></th>
+        <th class="col-splat" data-sort="sp" onclick="sortRows('sp')" style="min-width:94px;color:var(--green);cursor:pointer">Платформа<span class="sort-arr"> ⇅</span></th>
+        <th data-sort="spr" onclick="sortRows('spr')" style="min-width:80px;color:var(--green);cursor:pointer">Цена $<span class="sort-arr"> ⇅</span></th>
+        <th data-sort="sold" onclick="sortRows('sold')" style="min-width:52px;color:var(--green);cursor:pointer">Продано<span class="sort-arr"> ⇅</span></th>
         <th class="col-trade" style="min-width:60px;color:var(--yel)">Сделка</th>
         <th class="col-trade" style="min-width:60px;color:var(--yel)">Вывод %</th>
         <th style="min-width:86px;color:var(--yel)">Грязная $</th>
-        <th style="min-width:86px;color:var(--yel)">Чистая $</th>
+        <th data-sort="clean" onclick="sortRows('clean')" style="min-width:86px;color:var(--yel);cursor:pointer">Чистая $<span class="sort-arr"> ⇅</span></th>
       </tr>
     </thead>
     <tbody id="TB"></tbody>
@@ -123,8 +123,12 @@
   <table class="wt">
     <thead>
       <tr>
-        <th>#</th><th>Дата</th><th>Платформа</th>
-        <th>Выведено $</th><th>Комиссия $</th><th>Получено $</th>
+        <th>#</th>
+        <th data-sort-wd="date" onclick="sortWd('date')" style="cursor:pointer">Дата<span class="sort-arr"> ⇅</span></th>
+        <th data-sort-wd="plat" onclick="sortWd('plat')" style="cursor:pointer">Платформа<span class="sort-arr"> ⇅</span></th>
+        <th data-sort-wd="amount" onclick="sortWd('amount')" style="cursor:pointer">Выведено $<span class="sort-arr"> ⇅</span></th>
+        <th>Комиссия $</th>
+        <th data-sort-wd="net" onclick="sortWd('net')" style="cursor:pointer">Получено $<span class="sort-arr"> ⇅</span></th>
         <th>Комментарий</th><th></th>
       </tr>
     </thead>
@@ -147,8 +151,11 @@
   <table class="wt">
     <thead>
       <tr>
-        <th>#</th><th>Дата</th><th>Платформа</th>
-        <th>Сумма $</th><th>Комментарий</th><th></th>
+        <th>#</th>
+        <th data-sort-dep="date" onclick="sortDep('date')" style="cursor:pointer">Дата<span class="sort-arr"> ⇅</span></th>
+        <th data-sort-dep="plat" onclick="sortDep('plat')" style="cursor:pointer">Платформа<span class="sort-arr"> ⇅</span></th>
+        <th data-sort-dep="amount" onclick="sortDep('amount')" style="cursor:pointer">Сумма $<span class="sort-arr"> ⇅</span></th>
+        <th>Комментарий</th><th></th>
       </tr>
     </thead>
     <tbody id="DEP-TB"></tbody>
@@ -228,12 +235,12 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 
 <!-- App scripts -->
-<script src="js/config.js"></script>
-<script src="js/app.js"></script>
-<script src="js/admin.js"></script>
-<script src="js/withdrawals.js"></script>
-<script src="js/init.js"></script>
-<script src="js/firebase.js"></script>
+<script src="js/config.js?v=1.5"></script>
+<script src="js/app.js?v=1.5"></script>
+<script src="js/admin.js?v=1.5"></script>
+<script src="js/withdrawals.js?v=1.5"></script>
+<script src="js/init.js?v=1.5"></script>
+<script src="js/firebase.js?v=1.5"></script>
 
 </body>
 </html>
