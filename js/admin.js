@@ -101,6 +101,6 @@ function switchTab(name){
   document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('on'); });
   document.getElementById('tab-'+name).classList.add('on');
   document.getElementById('panel-'+name).classList.add('on');
-  setTimeout(fixStickyTop, 50);
-  setTimeout(fixStickyTop, 50);
+  
+  
 }

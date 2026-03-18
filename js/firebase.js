@@ -73,7 +73,7 @@ function initFirebase(){
           setBadgeDB('ok');
           firstLoad = false;
           render();
-          setTimeout(fixStickyTop, 300);
+          
         }, function(err){
           console.error(err);
           setBadgeDB('err');
