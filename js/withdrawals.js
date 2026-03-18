@@ -198,6 +198,9 @@ function loadDepLocal(){
 }
 
 // ── Сортировка выводов и депозитов ───────────────────────────────────────
+var wdSortField = '', wdSortDir = 1;
+var depSortField = '', depSortDir = 1;
+
 function sortWd(field){
   if(wdSortField === field) wdSortDir *= -1;
   else { wdSortField = field; wdSortDir = 1; }
